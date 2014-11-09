@@ -1,0 +1,6647 @@
+ship = Flyer-010b
+version = 0.21.1
+description = with booster engines
+type = SPH
+PART
+{
+	part = Mark2Cockpit_4294414764
+	partName = Part
+	pos = -0.3860937,9.06773,7.74202
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 0
+	link = stackDecoupler_4294414674
+	link = parachuteRadial_4294414638
+	link = parachuteRadial_4294414594
+	link = stackDecoupler_4294414550
+	link = sepMotor1_4294414390
+	link = sepMotor1_4294414352
+	link = sepMotor1_4294414314
+	link = sepMotor1_4294414276
+	link = sepMotor1_4294414238
+	link = sepMotor1_4294414200
+	link = sepMotor1_4294414162
+	link = sepMotor1_4294414124
+	attN = top,stackDecoupler_4294414674
+	attN = bottom,stackDecoupler_4294414550
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleCommand
+		isEnabled = True
+		controlSrcStatusText = 
+		EVENTS
+		{
+			MakeReference
+			{
+				active = True
+				guiActive = True
+				guiIcon = Control From Here
+				guiName = Control From Here
+				category = Control From Here
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			RenameVessel
+			{
+				active = True
+				guiActive = True
+				guiIcon = Rename Vessel
+				guiName = Rename Vessel
+				category = Rename Vessel
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleSAS
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleReactionWheel
+		isEnabled = True
+		stateString = Active
+		WheelState = Active
+		EVENTS
+		{
+			OnToggle
+			{
+				active = True
+				guiActive = True
+				guiIcon = Toggle Torque
+				guiName = Toggle Torque
+				category = Toggle Torque
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			Activate
+			{
+				actionGroup = None
+			}
+			Deactivate
+			{
+				actionGroup = None
+			}
+			Toggle
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleTripLogger
+		isEnabled = False
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+		Surfaced
+		{
+		}
+		Flew
+		{
+		}
+		FlewBy
+		{
+		}
+		Orbited
+		{
+		}
+		SubOrbited
+		{
+		}
+	}
+}
+PART
+{
+	part = stackDecoupler_4294414674
+	partName = Part
+	pos = -0.3860937,9.06773,8.81252
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 1
+	dstg = 1
+	sidx = 0
+	sqor = 1
+	attm = 0
+	link = noseConeAdapter_4294414514
+	attN = bottom,Mark2Cockpit_4294414764
+	attN = top,noseConeAdapter_4294414514
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleDecouple
+		isEnabled = True
+		isDecoupled = False
+		EVENTS
+		{
+			Decouple
+			{
+				active = True
+				guiActive = True
+				guiIcon = Decouple
+				guiName = Decouple
+				category = Decouple
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			DecoupleAction
+			{
+				actionGroup = Abort
+			}
+		}
+	}
+}
+PART
+{
+	part = parachuteRadial_4294414638
+	partName = Part
+	pos = 0.2350706,9.06773,7.754353
+	rot = 0.4999999,-0.5000002,-0.5000002,0.4999999
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 0
+	sqor = 0
+	attm = 1
+	sym = parachuteRadial_4294414594
+	srfN = srfAttach,Mark2Cockpit_4294414764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleParachute
+		isEnabled = True
+		persistentState = STOWED
+		staged = False
+		EVENTS
+		{
+			Deploy
+			{
+				active = True
+				guiActive = True
+				guiIcon = Deploy Chute
+				guiName = Deploy Chute
+				category = Deploy Chute
+				guiActiveUnfocused = True
+				unfocusedRange = 4
+				externalToEVAOnly = True
+			}
+			CutParachute
+			{
+				active = False
+				guiActive = True
+				guiIcon = Cut Parachute
+				guiName = Cut Parachute
+				category = Cut Parachute
+				guiActiveUnfocused = True
+				unfocusedRange = 4
+				externalToEVAOnly = True
+			}
+			Repack
+			{
+				active = False
+				guiActive = False
+				guiIcon = Repack Chute
+				guiName = Repack Chute
+				category = Repack Chute
+				guiActiveUnfocused = True
+				unfocusedRange = 4
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			DeployAction
+			{
+				actionGroup = Abort
+			}
+			CutAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = parachuteRadial_4294414594
+	partName = Part
+	pos = -1.007257,9.06773,7.754353
+	rot = 0.4999999,0.5000002,0.5000002,0.4999999
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 1
+	sqor = 0
+	attm = 1
+	sym = parachuteRadial_4294414638
+	srfN = srfAttach,Mark2Cockpit_4294414764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleParachute
+		isEnabled = True
+		persistentState = STOWED
+		staged = False
+		EVENTS
+		{
+			Deploy
+			{
+				active = True
+				guiActive = True
+				guiIcon = Deploy Chute
+				guiName = Deploy Chute
+				category = Deploy Chute
+				guiActiveUnfocused = True
+				unfocusedRange = 4
+				externalToEVAOnly = True
+			}
+			CutParachute
+			{
+				active = False
+				guiActive = True
+				guiIcon = Cut Parachute
+				guiName = Cut Parachute
+				category = Cut Parachute
+				guiActiveUnfocused = True
+				unfocusedRange = 4
+				externalToEVAOnly = True
+			}
+			Repack
+			{
+				active = False
+				guiActive = False
+				guiIcon = Repack Chute
+				guiName = Repack Chute
+				category = Repack Chute
+				guiActiveUnfocused = True
+				unfocusedRange = 4
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			DeployAction
+			{
+				actionGroup = Abort
+			}
+			CutAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = stackDecoupler_4294414550
+	partName = Part
+	pos = -0.3860937,9.06773,6.708218
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 1
+	dstg = 1
+	sidx = 1
+	sqor = 1
+	attm = 0
+	link = RCSFuelTank_4294414086
+	attN = bottom,RCSFuelTank_4294414086
+	attN = top,Mark2Cockpit_4294414764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleDecouple
+		isEnabled = True
+		isDecoupled = False
+		EVENTS
+		{
+			Decouple
+			{
+				active = True
+				guiActive = True
+				guiIcon = Decouple
+				guiName = Decouple
+				category = Decouple
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			DecoupleAction
+			{
+				actionGroup = Abort
+			}
+		}
+	}
+}
+PART
+{
+	part = noseConeAdapter_4294414514
+	partName = Strut
+	pos = -0.3860937,9.06773,9.427574
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	link = standardNoseCone_4294414486
+	link = spotLight1_4294414458
+	link = spotLight1_4294414424
+	attN = top,standardNoseCone_4294414486
+	attN = bottom01,stackDecoupler_4294414674
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = standardNoseCone_4294414486
+	partName = Strut
+	pos = -0.3860937,9.06773,10.29382
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	attN = bottom01,noseConeAdapter_4294414514
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = spotLight1_4294414458
+	partName = Part
+	pos = -0.7392122,8.63402,9.215447
+	rot = 0.6996933,0.1021237,-0.2614036,-0.6570147
+	attRot = -0.7071066,-2.107342E-08,-0.7071066,-2.107342E-08
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = spotLight1_4294414424
+	srfN = srfAttach,noseConeAdapter_4294414514
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleLight
+		isEnabled = True
+		isOn = False
+		EVENTS
+		{
+			LightsOff
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lights Off
+				guiName = Lights Off
+				category = Lights Off
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			LightsOn
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lights On
+				guiName = Lights On
+				category = Lights On
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleLightAction
+			{
+				actionGroup = Light
+			}
+			LightOnAction
+			{
+				actionGroup = None
+			}
+			LightOffAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = spotLight1_4294414424
+	partName = Part
+	pos = -0.03297517,8.63402,9.215447
+	rot = -0.6996933,0.1021237,-0.2614036,0.6570147
+	attRot = 0.7071066,2.107342E-08,0.7071066,-2.107342E-08
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = spotLight1_4294414458
+	srfN = srfAttach,noseConeAdapter_4294414514
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleLight
+		isEnabled = True
+		isOn = False
+		EVENTS
+		{
+			LightsOff
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lights Off
+				guiName = Lights Off
+				category = Lights Off
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			LightsOn
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lights On
+				guiName = Lights On
+				category = Lights On
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleLightAction
+			{
+				actionGroup = Light
+			}
+			LightOnAction
+			{
+				actionGroup = None
+			}
+			LightOffAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = sepMotor1_4294414390
+	partName = Part
+	pos = 0.2329805,9.128618,8.47185
+	rot = -4.214685E-08,-0.7071068,-6.322028E-08,-0.7071069
+	attRot = 1.040565E-15,4.214684E-08,0.7071067,-0.7071067
+	mir = 1,1,1
+	istg = 1
+	dstg = 0
+	sidx = 2
+	sqor = 1
+	attm = 1
+	sym = sepMotor1_4294414352
+	srfN = srfAttach,Mark2Cockpit_4294414764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = sepMotor1_4294414352
+	partName = Part
+	pos = -1.005168,9.128618,8.47185
+	rot = 4.214685E-08,-0.7071068,-6.322028E-08,0.7071069
+	attRot = -1.040565E-15,-4.214684E-08,-0.7071067,-0.7071067
+	mir = 1,1,1
+	istg = 1
+	dstg = 0
+	sidx = 3
+	sqor = 1
+	attm = 1
+	sym = sepMotor1_4294414390
+	srfN = srfAttach,Mark2Cockpit_4294414764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = sepMotor1_4294414314
+	partName = Part
+	pos = 0.2329805,9.110915,7.136366
+	rot = -8.42937E-08,-0.7071068,-8.42937E-08,-0.7071068
+	attRot = 1.040566E-15,4.214685E-08,0.7071067,-0.7071067
+	mir = 1,1,1
+	istg = 1
+	dstg = 0
+	sidx = 4
+	sqor = 1
+	attm = 1
+	sym = sepMotor1_4294414276
+	srfN = srfAttach,Mark2Cockpit_4294414764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = sepMotor1_4294414276
+	partName = Part
+	pos = -1.005168,9.110915,7.136366
+	rot = 8.42937E-08,-0.7071068,-8.42937E-08,0.7071068
+	attRot = -1.040566E-15,-4.214685E-08,-0.7071067,-0.7071067
+	mir = 1,1,1
+	istg = 1
+	dstg = 0
+	sidx = 5
+	sqor = 1
+	attm = 1
+	sym = sepMotor1_4294414314
+	srfN = srfAttach,Mark2Cockpit_4294414764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = sepMotor1_4294414238
+	partName = Part
+	pos = -0.9005691,8.720678,7.694326
+	rot = 0.6123723,-0.353554,-0.353554,0.612372
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 1
+	dstg = 0
+	sidx = 6
+	sqor = 1
+	attm = 1
+	sym = sepMotor1_4294414200
+	srfN = srfAttach,Mark2Cockpit_4294414764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = sepMotor1_4294414200
+	partName = Part
+	pos = 0.1283818,8.720678,7.694326
+	rot = 0.6123723,0.353554,0.353554,0.612372
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 1
+	dstg = 0
+	sidx = 7
+	sqor = 1
+	attm = 1
+	sym = sepMotor1_4294414238
+	srfN = srfAttach,Mark2Cockpit_4294414764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = sepMotor1_4294414162
+	partName = Part
+	pos = -0.8678962,9.471374,7.691263
+	rot = -0.353554,0.6123719,0.6123722,-0.3535541
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 1
+	dstg = 0
+	sidx = 8
+	sqor = 1
+	attm = 1
+	sym = sepMotor1_4294414124
+	srfN = srfAttach,Mark2Cockpit_4294414764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = sepMotor1_4294414124
+	partName = Part
+	pos = 0.09570882,9.471374,7.691263
+	rot = 0.353554,0.6123719,0.6123722,0.3535541
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 1
+	dstg = 0
+	sidx = 9
+	sqor = 1
+	attm = 1
+	sym = sepMotor1_4294414162
+	srfN = srfAttach,Mark2Cockpit_4294414764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = RCSFuelTank_4294414086
+	partName = Part
+	pos = -0.3860937,9.06773,6.289916
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	link = advSasModule_4294414060
+	attN = top,stackDecoupler_4294414550
+	attN = bottom,advSasModule_4294414060
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = advSasModule_4294414060
+	partName = Part
+	pos = -0.3860937,9.06773,5.805589
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	link = mk2SpacePlaneAdapter_4294414032
+	attN = top,RCSFuelTank_4294414086
+	attN = bottom,mk2SpacePlaneAdapter_4294414032
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleReactionWheel
+		isEnabled = True
+		stateString = Active
+		WheelState = Active
+		EVENTS
+		{
+			OnToggle
+			{
+				active = True
+				guiActive = True
+				guiIcon = Toggle Torque
+				guiName = Toggle Torque
+				category = Toggle Torque
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			Activate
+			{
+				actionGroup = None
+			}
+			Deactivate
+			{
+				actionGroup = None
+			}
+			Toggle
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleSAS
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = mk2SpacePlaneAdapter_4294414032
+	partName = Part
+	pos = -0.3860937,9.06773,4.656544
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	link = sensorThermometer_4294414006
+	link = sensorThermometer_4294413984
+	link = SmallGearBay_4294413962
+	link = mk2Fuselage_4294413794
+	link = linearRcs_4294413142
+	link = linearRcs_4294413104
+	link = linearRcs_4294413066
+	link = linearRcs_4294413028
+	attN = top,advSasModule_4294414060
+	attN = bottom,mk2Fuselage_4294413794
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = sensorThermometer_4294414006
+	partName = Part
+	pos = 0.2342506,9.425886,5.068789
+	rot = -0.6843159,0.3832831,0.3112942,-0.5365648
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = sensorThermometer_4294413984
+	srfN = srfAttach,mk2SpacePlaneAdapter_4294414032
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEnviroSensor
+		isEnabled = True
+		sensorActive = False
+		EVENTS
+		{
+			Toggle
+			{
+				active = True
+				guiActive = True
+				guiIcon = Toggle
+				guiName = Toggle
+				category = Toggle
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = sensorThermometer_4294413984
+	partName = Part
+	pos = -1.006438,9.425886,5.068789
+	rot = 0.6843159,0.3832831,0.3112943,0.5365648
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = sensorThermometer_4294414006
+	srfN = srfAttach,mk2SpacePlaneAdapter_4294414032
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEnviroSensor
+		isEnabled = True
+		sensorActive = False
+		EVENTS
+		{
+			Toggle
+			{
+				active = True
+				guiActive = True
+				guiIcon = Toggle
+				guiName = Toggle
+				category = Toggle
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = SmallGearBay_4294413962
+	partName = Part
+	pos = -0.3860925,8.288862,4.562458
+	rot = -0.00447882,0.0003476462,1.644468E-06,0.99999
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	srfN = srfAttach,mk2SpacePlaneAdapter_4294414032
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleLandingGear
+		isEnabled = True
+		brakesEngaged = False
+		storedGearState = UNDEFINED
+		storedAnimationSpeed = 0
+		storedAnimationTime = 0
+		EVENTS
+		{
+			LowerLandingGear
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lower Gear
+				guiName = Lower Gear
+				category = Lower Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			RaiseLandingGear
+			{
+				active = True
+				guiActive = True
+				guiIcon = Raise Gear
+				guiName = Raise Gear
+				category = Raise Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Gear
+			}
+			BrakesAction
+			{
+				actionGroup = Brakes
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleLight
+		isEnabled = True
+		isOn = False
+		EVENTS
+		{
+			LightsOff
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lights Off
+				guiName = Lights Off
+				category = Lights Off
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			LightsOn
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lights On
+				guiName = Lights On
+				category = Lights On
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleLightAction
+			{
+				actionGroup = Light
+			}
+			LightOnAction
+			{
+				actionGroup = None
+			}
+			LightOffAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = mk2Fuselage_4294413794
+	partName = Part
+	pos = -0.3860937,9.06773,1.775281
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	link = mk2Fuselage_4294413764
+	link = Proceduralwing2_4294412834
+	link = Proceduralwing2_4294412794
+	attN = top,mk2SpacePlaneAdapter_4294414032
+	attN = bottom,mk2Fuselage_4294413764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = mk2Fuselage_4294413764
+	partName = Part
+	pos = -0.3860937,9.06773,-2.092246
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	link = mk2Fuselage_4294413734
+	link = longAntenna_4294413202
+	link = Proceduralwing2_4294412914
+	link = Proceduralwing2_4294412874
+	link = Proceduralwing2_4294412754
+	link = Proceduralwing2_4294412714
+	link = Proceduralwing2_4294412434
+	link = Proceduralwing2_4294412394
+	attN = top,mk2Fuselage_4294413794
+	attN = bottom,mk2Fuselage_4294413734
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = mk2Fuselage_4294413734
+	partName = Part
+	pos = -0.3860937,9.06773,-5.959827
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	link = mk2SpacePlaneAdapter_4294413704
+	link = nacelleBody_4294412354
+	link = nacelleBody_4294411930
+	attN = top,mk2Fuselage_4294413764
+	attN = bottom,mk2SpacePlaneAdapter_4294413704
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = mk2SpacePlaneAdapter_4294413704
+	partName = Part
+	pos = -0.3860937,9.06773,-8.846033
+	rot = 1.256074E-15,-0.7071068,0.7071069,-1.256074E-15
+	attRot = 1.776357E-15,-0.9999999,5.960464E-08,-2.117582E-22
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	link = airplaneTail_4294413678
+	link = strutConnector_4294413314
+	link = strutConnector_4294413258
+	attN = bottom,mk2Fuselage_4294413734
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = airplaneTail_4294413678
+	partName = Strut
+	pos = -0.3860937,9.03094,-9.797474
+	rot = -0.7071069,2.820578E-08,-2.820578E-08,-0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = SmallGearBay_4294413650
+	link = SmallGearBay_4294413482
+	link = linearRcs_4294412990
+	link = linearRcs_4294412952
+	link = structuralWing_4294409858
+	link = linearRcs_4294409742
+	link = linearRcs_4294409704
+	srfN = ,mk2SpacePlaneAdapter_4294413704
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = SmallGearBay_4294413650
+	partName = Part
+	pos = -0.5885452,8.273576,-9.862614
+	rot = 0.04949802,-0.013294,-0.1294317,0.990263
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = SmallGearBay_4294413482
+	srfN = srfAttach,airplaneTail_4294413678
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleLandingGear
+		isEnabled = True
+		brakesEngaged = False
+		storedGearState = UNDEFINED
+		storedAnimationSpeed = 0
+		storedAnimationTime = 0
+		EVENTS
+		{
+			LowerLandingGear
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lower Gear
+				guiName = Lower Gear
+				category = Lower Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			RaiseLandingGear
+			{
+				active = True
+				guiActive = True
+				guiIcon = Raise Gear
+				guiName = Raise Gear
+				category = Raise Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Gear
+			}
+			BrakesAction
+			{
+				actionGroup = Brakes
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleLight
+		isEnabled = True
+		isOn = False
+		EVENTS
+		{
+			LightsOff
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lights Off
+				guiName = Lights Off
+				category = Lights Off
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			LightsOn
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lights On
+				guiName = Lights On
+				category = Lights On
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleLightAction
+			{
+				actionGroup = Light
+			}
+			LightOnAction
+			{
+				actionGroup = None
+			}
+			LightOffAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = SmallGearBay_4294413482
+	partName = Part
+	pos = -0.1836421,8.273576,-9.862614
+	rot = 0.04949798,0.01329398,0.1294317,0.990263
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = SmallGearBay_4294413650
+	srfN = srfAttach,airplaneTail_4294413678
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleLandingGear
+		isEnabled = True
+		brakesEngaged = False
+		storedGearState = UNDEFINED
+		storedAnimationSpeed = 0
+		storedAnimationTime = 0
+		EVENTS
+		{
+			LowerLandingGear
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lower Gear
+				guiName = Lower Gear
+				category = Lower Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			RaiseLandingGear
+			{
+				active = True
+				guiActive = True
+				guiIcon = Raise Gear
+				guiName = Raise Gear
+				category = Raise Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Gear
+			}
+			BrakesAction
+			{
+				actionGroup = Brakes
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleLight
+		isEnabled = True
+		isOn = False
+		EVENTS
+		{
+			LightsOff
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lights Off
+				guiName = Lights Off
+				category = Lights Off
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			LightsOn
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lights On
+				guiName = Lights On
+				category = Lights On
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleLightAction
+			{
+				actionGroup = Light
+			}
+			LightOnAction
+			{
+				actionGroup = None
+			}
+			LightOffAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = strutConnector_4294413314
+	partName = StrutConnector
+	pos = -0.1679214,9.881959,-8.13117
+	rot = -0.3855423,0.5901516,0.52701,-0.4746988
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: nacelleBody_67; pos: -0.1195076,0.3303117,-1.412171; dir: -0.08212337,0.2269921,-0.9704304
+	sym = strutConnector_4294413258
+	srfN = srfAttach,mk2SpacePlaneAdapter_4294413704
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294413258
+	partName = StrutConnector
+	pos = -0.604266,9.881959,-8.13117
+	rot = -0.5270101,0.4746986,0.3855422,-0.5901517
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: nacelleBody_39; pos: -0.1195073,0.3303093,1.412169; dir: -0.08212353,0.226992,0.9704298
+	sym = strutConnector_4294413314
+	srfN = srfAttach,mk2SpacePlaneAdapter_4294413704
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = longAntenna_4294413202
+	partName = Part
+	pos = -0.3860937,9.959305,-0.2401447
+	rot = -4.371139E-08,1,3.371748E-07,-3.562999E-09
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	srfN = srfAttach,mk2Fuselage_4294413764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleAnimateGeneric
+		isEnabled = True
+		animSwitch = True
+		animTime = 0
+		animSpeed = 1
+		EVENTS
+		{
+			Toggle
+			{
+				active = True
+				guiActive = True
+				guiIcon = Toggle
+				guiName = toggle
+				category = Toggle
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4294413142
+	partName = Part
+	pos = -0.209336,9.650862,5.431795
+	rot = 0.1559379,0.9846228,0.07778025,0.0123183
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4294413104
+	srfN = srfAttach,mk2SpacePlaneAdapter_4294414032
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4294413104
+	partName = Part
+	pos = -0.5628514,9.650862,5.431795
+	rot = -0.1559379,0.9846228,0.07778025,-0.0123183
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4294413142
+	srfN = srfAttach,mk2SpacePlaneAdapter_4294414032
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4294413066
+	partName = Part
+	pos = 0.01909152,8.61896,5.436542
+	rot = 0.9498125,0.3066589,0.01898156,0.0587914
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4294413028
+	srfN = srfAttach,mk2SpacePlaneAdapter_4294414032
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4294413028
+	partName = Part
+	pos = -0.7912788,8.61896,5.436542
+	rot = 0.9498125,-0.3066589,-0.01898156,0.0587914
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4294413066
+	srfN = srfAttach,mk2SpacePlaneAdapter_4294414032
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4294412990
+	partName = Part
+	pos = -0.5656636,9.030939,-13.72748
+	rot = 0.7061934,-0.7061933,0.03593095,-0.03593135
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4294412952
+	srfN = srfAttach,airplaneTail_4294413678
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4294412952
+	partName = Part
+	pos = -0.2065237,9.030939,-13.72748
+	rot = 0.7061934,0.7061933,-0.03593146,-0.03593192
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4294412990
+	srfN = srfAttach,airplaneTail_4294413678
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412914
+	partName = Winglet
+	pos = -1.598998,9.06773,-0.3095174
+	rot = 0,0.7071068,0.7071068,0
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294412594
+	sym = Proceduralwing2_4294412874
+	srfN = srfAttach,mk2Fuselage_4294413764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.1374993, -0.1374993, -0.1374993)
+		tipPosition = (-3.615533, 1.192093E-07, 2.630719)
+		rootScale = (0.4999977, 0.4999977, 0.4999977)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412874
+	partName = Winglet
+	pos = 0.8268105,9.06773,-0.3095174
+	rot = -0.7071069,-3.090863E-08,-3.090862E-08,-0.7071067
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294412554
+	sym = Proceduralwing2_4294412914
+	srfN = srfAttach,mk2Fuselage_4294413764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.1374993, -0.1374993, -0.1374993)
+		tipPosition = (-3.615533, 1.192093E-07, 2.630719)
+		rootScale = (0.4999977, 0.4999977, 0.4999977)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412834
+	partName = Winglet
+	pos = -1.597594,9.06773,2.149406
+	rot = 0,0.7071068,0.7071068,0
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294412674
+	sym = Proceduralwing2_4294412794
+	srfN = srfAttach,mk2Fuselage_4294413794
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.125, -0.125, -0.125)
+		tipPosition = (-4.693305, 1.192093E-07, 2.635633)
+		rootScale = (0.5624999, 0.5624999, 0.5624999)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412794
+	partName = Winglet
+	pos = 0.8254066,9.06773,2.149406
+	rot = -0.7071069,-3.090863E-08,-3.090862E-08,-0.7071067
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294412634
+	sym = Proceduralwing2_4294412834
+	srfN = srfAttach,mk2Fuselage_4294413794
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.125, -0.125, -0.125)
+		tipPosition = (-4.693305, 1.192093E-07, 2.635633)
+		rootScale = (0.5624999, 0.5624999, 0.5624999)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412754
+	partName = Winglet
+	pos = -1.598394,9.06773,-2.549088
+	rot = 0,0.7071068,0.7071068,0
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294412514
+	sym = Proceduralwing2_4294412714
+	srfN = srfAttach,mk2Fuselage_4294413764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.2, -0.2, -0.2)
+		tipPosition = (-2.70183, 1.192093E-07, 2.641943)
+		rootScale = (0.3, 0.3, 0.3)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412714
+	partName = Winglet
+	pos = 0.8262066,9.06773,-2.549088
+	rot = -0.7071069,-3.090863E-08,-3.090862E-08,-0.7071067
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294412474
+	sym = Proceduralwing2_4294412754
+	srfN = srfAttach,mk2Fuselage_4294413764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.2, -0.2, -0.2)
+		tipPosition = (-2.70183, 1.192093E-07, 2.641943)
+		rootScale = (0.3, 0.3, 0.3)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412674
+	partName = Winglet
+	pos = -5.233233,9.067731,-2.543908
+	rot = 7.277424E-09,0.7071068,0.7071068,8.282512E-09
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294410270
+	sym = Proceduralwing2_4294412634
+	srfN = srfAttach,Proceduralwing2_4294412834
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.4374999, -0.4374999, -0.4374999)
+		tipPosition = (-1.827789, 1.192093E-07, 1.55002)
+		rootScale = (-0.125, -0.125, -0.125)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412634
+	partName = Winglet
+	pos = 4.46104,9.067733,-2.543892
+	rot = -0.7071068,-3.919114E-08,-3.818604E-08,-0.7071069
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294410230
+	sym = Proceduralwing2_4294412674
+	srfN = srfAttach,Proceduralwing2_4294412794
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.4374999, -0.4374999, -0.4374999)
+		tipPosition = (-1.827789, 1.192093E-07, 1.55002)
+		rootScale = (-0.125, -0.125, -0.125)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412594
+	partName = Winglet
+	pos = -5.229723,9.067731,-3.925053
+	rot = 0,0.7071068,0.7071068,0
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294410350
+	sym = Proceduralwing2_4294412554
+	srfN = srfAttach,Proceduralwing2_4294412914
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.4374999, -0.4374999, -0.4374999)
+		tipPosition = (-1.35983, 1.192093E-07, 1.558275)
+		rootScale = (-0.1374993, -0.1374993, -0.1374993)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412554
+	partName = Winglet
+	pos = 4.45753,9.067731,-3.925049
+	rot = -0.7071068,-3.090863E-08,-3.090862E-08,-0.7071069
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294410310
+	sym = Proceduralwing2_4294412594
+	srfN = srfAttach,Proceduralwing2_4294412874
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.4374999, -0.4374999, -0.4374999)
+		tipPosition = (-1.35983, 1.192093E-07, 1.558275)
+		rootScale = (-0.1374993, -0.1374993, -0.1374993)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412514
+	partName = Winglet
+	pos = -5.240341,9.067731,-5.250926
+	rot = 0,0.7071068,0.7071068,0
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294410190
+	sym = Proceduralwing2_4294412474
+	srfN = srfAttach,Proceduralwing2_4294412754
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.5125, -0.5125, -0.5125)
+		tipPosition = (-0.8432032, 1.192093E-07, 1.555137)
+		rootScale = (-0.2, -0.2, -0.2)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412474
+	partName = Winglet
+	pos = 4.46815,9.067731,-5.250923
+	rot = -0.7071068,-3.090863E-08,-3.090862E-08,-0.7071069
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294410150
+	sym = Proceduralwing2_4294412514
+	srfN = srfAttach,Proceduralwing2_4294412714
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.5125, -0.5125, -0.5125)
+		tipPosition = (-0.8432032, 1.192093E-07, 1.555137)
+		rootScale = (-0.2, -0.2, -0.2)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412434
+	partName = Winglet
+	pos = -1.597517,9.098439,-3.985777
+	rot = 4.214685E-08,-0.7071068,-0.7071069,2.107343E-08
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = Proceduralwing2_4294412394
+	srfN = srfAttach,mk2Fuselage_4294413764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.9749998, -0.9749998, -0.9749998)
+		tipPosition = (0.2723587, 1.192093E-07, 0.5480182)
+		rootScale = (-0.1625, -0.1625, -0.1625)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294412394
+	partName = Winglet
+	pos = 0.8253294,9.098439,-3.985777
+	rot = -0.7071071,-9.835177E-09,1.123823E-08,-0.7071066
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = Proceduralwing2_4294412434
+	srfN = srfAttach,mk2Fuselage_4294413764
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.9749998, -0.9749998, -0.9749998)
+		tipPosition = (0.2723587, 1.192093E-07, 0.5480182)
+		rootScale = (-0.1625, -0.1625, -0.1625)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = nacelleBody_4294412354
+	partName = Strut
+	pos = -2.237517,9.097211,-7.305692
+	rot = 0.5000001,0.5,0.5000001,0.5000001
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = turboFanEngine_4294412318
+	link = strutConnector_4294412234
+	link = strutConnector_4294412178
+	link = nacelleBody_4294412122
+	link = ramAirIntake_4294411966
+	sym = nacelleBody_4294411930
+	srfN = srfAttach,mk2Fuselage_4294413734
+	attN = top,ramAirIntake_4294411966
+	attN = bottom,turboFanEngine_4294412318
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleResourceIntake
+		isEnabled = True
+		intakeEnabled = True
+		EVENTS
+		{
+			Deactivate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Close Intake
+				guiName = Close Intake
+				category = Close Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Activate
+			{
+				active = False
+				guiActive = True
+				guiIcon = Open Intake
+				guiName = Open Intake
+				category = Open Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = turboFanEngine_4294412318
+	partName = Part
+	pos = -2.237517,9.097212,-9.670643
+	rot = 0.7071068,-8.745192E-08,-1.509667E-07,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 4
+	dstg = 2
+	sidx = 0
+	sqor = 4
+	attm = 0
+	sym = turboFanEngine_4294411894
+	attN = top,nacelleBody_4294412354
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Custom01
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAnimateHeat
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleGimbal
+		isEnabled = True
+		gimbalLock = False
+		EVENTS
+		{
+			LockGimbal
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lock Gimbal
+				guiName = Lock Gimbal
+				category = Lock Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			FreeGimbal
+			{
+				active = False
+				guiActive = True
+				guiIcon = Free Gimbal
+				guiName = Free Gimbal
+				category = Free Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAlternator
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = strutConnector_4294412234
+	partName = StrutConnector
+	pos = -2.073681,9.708654,-8.158794
+	rot = -0.4304595,0.5609854,0.5609859,-0.4304591
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: mk2SpacePlaneAdapter_18; pos: -0.3640146,-1.454458,-1.516327; dir: -0.1707051,-0.6820697,-0.711087
+	sym = strutConnector_4294411810
+	srfN = srfAttach,nacelleBody_4294412354
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294412178
+	partName = StrutConnector
+	pos = -2.072646,9.712518,-7.387605
+	rot = -0.4304592,0.5609856,0.560986,-0.4304591
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: mk2Fuselage_17; pos: -0.4051068,0.6212237,-1.200076; dir: -0.2871566,0.4403546,-0.8506668
+	sym = strutConnector_4294411754
+	srfN = srfAttach,nacelleBody_4294412354
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = nacelleBody_4294412122
+	partName = Strut
+	pos = -3.497008,9.097211,-7.291116
+	rot = 0.5000001,0.4999999,0.5000001,0.5000001
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = ramAirIntake_4294412086
+	link = turboFanEngine_4294412050
+	link = fuelTank.long_4294411506
+	link = SmallGearBay_4294409202
+	sym = nacelleBody_4294411698
+	srfN = srfAttach,nacelleBody_4294412354
+	attN = top,ramAirIntake_4294412086
+	attN = bottom,turboFanEngine_4294412050
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleResourceIntake
+		isEnabled = True
+		intakeEnabled = True
+		EVENTS
+		{
+			Deactivate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Close Intake
+				guiName = Close Intake
+				category = Close Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Activate
+			{
+				active = False
+				guiActive = True
+				guiIcon = Open Intake
+				guiName = Open Intake
+				category = Open Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = ramAirIntake_4294412086
+	partName = Part
+	pos = -3.497009,9.097211,-6.353616
+	rot = 0.7071069,2.710029E-07,1.462297E-07,0.7071069
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	sym = ramAirIntake_4294411662
+	attN = bottom01,nacelleBody_4294412122
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleResourceIntake
+		isEnabled = True
+		intakeEnabled = True
+		EVENTS
+		{
+			Deactivate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Close Intake
+				guiName = Close Intake
+				category = Close Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Activate
+			{
+				active = False
+				guiActive = True
+				guiIcon = Open Intake
+				guiName = Open Intake
+				category = Open Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = turboFanEngine_4294412050
+	partName = Part
+	pos = -3.497007,9.09721,-9.656054
+	rot = 0.7071069,2.710029E-07,1.462297E-07,0.7071069
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 4
+	dstg = 2
+	sidx = 1
+	sqor = 4
+	attm = 0
+	sym = turboFanEngine_4294411626
+	attN = top,nacelleBody_4294412122
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Custom01
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAnimateHeat
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleGimbal
+		isEnabled = True
+		gimbalLock = False
+		EVENTS
+		{
+			LockGimbal
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lock Gimbal
+				guiName = Lock Gimbal
+				category = Lock Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			FreeGimbal
+			{
+				active = False
+				guiActive = True
+				guiIcon = Free Gimbal
+				guiName = Free Gimbal
+				category = Free Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAlternator
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = ramAirIntake_4294411966
+	partName = Part
+	pos = -2.237517,9.097211,-6.368202
+	rot = -0.7071069,1.369772E-07,-1.369772E-07,-0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	sym = ramAirIntake_4294411542
+	attN = bottom01,nacelleBody_4294412354
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleResourceIntake
+		isEnabled = True
+		intakeEnabled = True
+		EVENTS
+		{
+			Deactivate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Close Intake
+				guiName = Close Intake
+				category = Close Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Activate
+			{
+				active = False
+				guiActive = True
+				guiIcon = Open Intake
+				guiName = Open Intake
+				category = Open Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = nacelleBody_4294411930
+	partName = Strut
+	pos = 1.46533,9.097211,-7.305692
+	rot = 0.5000001,-0.5,-0.5000001,0.4999999
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = turboFanEngine_4294411894
+	link = strutConnector_4294411810
+	link = strutConnector_4294411754
+	link = nacelleBody_4294411698
+	link = ramAirIntake_4294411542
+	sym = nacelleBody_4294412354
+	srfN = srfAttach,mk2Fuselage_4294413734
+	attN = top,ramAirIntake_4294411542
+	attN = bottom,turboFanEngine_4294411894
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleResourceIntake
+		isEnabled = True
+		intakeEnabled = True
+		EVENTS
+		{
+			Deactivate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Close Intake
+				guiName = Close Intake
+				category = Close Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Activate
+			{
+				active = False
+				guiActive = True
+				guiIcon = Open Intake
+				guiName = Open Intake
+				category = Open Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = turboFanEngine_4294411894
+	partName = Part
+	pos = 1.46533,9.097212,-9.670643
+	rot = 0.7071072,-3.898853E-08,2.774071E-07,0.7071065
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 4
+	dstg = 2
+	sidx = 2
+	sqor = 4
+	attm = 0
+	sym = turboFanEngine_4294412318
+	attN = top,nacelleBody_4294411930
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Custom01
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAnimateHeat
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleGimbal
+		isEnabled = True
+		gimbalLock = False
+		EVENTS
+		{
+			LockGimbal
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lock Gimbal
+				guiName = Lock Gimbal
+				category = Lock Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			FreeGimbal
+			{
+				active = False
+				guiActive = True
+				guiIcon = Free Gimbal
+				guiName = Free Gimbal
+				category = Free Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAlternator
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = strutConnector_4294411810
+	partName = StrutConnector
+	pos = 1.301494,9.708654,-8.158794
+	rot = -0.560986,0.4304591,0.4304594,-0.5609853
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: mk2SpacePlaneAdapter_18; pos: -0.3640147,-1.454458,1.516327; dir: -0.1707052,-0.6820695,0.7110876
+	sym = strutConnector_4294412234
+	srfN = srfAttach,nacelleBody_4294411930
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294411754
+	partName = StrutConnector
+	pos = 1.300459,9.712518,-7.387605
+	rot = -0.5609862,0.430459,0.4304592,-0.5609853
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: mk2Fuselage_17; pos: -0.4051073,0.6212221,1.200076; dir: -0.2871567,0.4403553,0.8506672
+	sym = strutConnector_4294412178
+	srfN = srfAttach,nacelleBody_4294411930
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = nacelleBody_4294411698
+	partName = Strut
+	pos = 2.724822,9.097211,-7.291116
+	rot = 0.5000001,-0.5,-0.5000001,0.4999999
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = ramAirIntake_4294411662
+	link = turboFanEngine_4294411626
+	link = fuelTank.long_4294411344
+	link = SmallGearBay_4294409034
+	sym = nacelleBody_4294412122
+	srfN = srfAttach,nacelleBody_4294411930
+	attN = top,ramAirIntake_4294411662
+	attN = bottom,turboFanEngine_4294411626
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleResourceIntake
+		isEnabled = True
+		intakeEnabled = True
+		EVENTS
+		{
+			Deactivate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Close Intake
+				guiName = Close Intake
+				category = Close Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Activate
+			{
+				active = False
+				guiActive = True
+				guiIcon = Open Intake
+				guiName = Open Intake
+				category = Open Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = ramAirIntake_4294411662
+	partName = Part
+	pos = 2.724823,9.097211,-6.353616
+	rot = 0.7071072,-1.042232E-07,-2.534046E-07,0.7071065
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	sym = ramAirIntake_4294412086
+	attN = bottom01,nacelleBody_4294411698
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleResourceIntake
+		isEnabled = True
+		intakeEnabled = True
+		EVENTS
+		{
+			Deactivate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Close Intake
+				guiName = Close Intake
+				category = Close Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Activate
+			{
+				active = False
+				guiActive = True
+				guiIcon = Open Intake
+				guiName = Open Intake
+				category = Open Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = turboFanEngine_4294411626
+	partName = Part
+	pos = 2.72482,9.09721,-9.656054
+	rot = 0.7071072,-1.042232E-07,-2.534046E-07,0.7071065
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 4
+	dstg = 2
+	sidx = 3
+	sqor = 4
+	attm = 0
+	sym = turboFanEngine_4294412050
+	attN = top,nacelleBody_4294411698
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Custom01
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAnimateHeat
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleGimbal
+		isEnabled = True
+		gimbalLock = False
+		EVENTS
+		{
+			LockGimbal
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lock Gimbal
+				guiName = Lock Gimbal
+				category = Lock Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			FreeGimbal
+			{
+				active = False
+				guiActive = True
+				guiIcon = Free Gimbal
+				guiName = Free Gimbal
+				category = Free Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAlternator
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = ramAirIntake_4294411542
+	partName = Part
+	pos = 1.46533,9.097211,-6.368202
+	rot = 0.7071069,1.05367E-08,-1.053669E-08,0.7071067
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	sym = ramAirIntake_4294411966
+	attN = bottom01,nacelleBody_4294411930
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleResourceIntake
+		isEnabled = True
+		intakeEnabled = True
+		EVENTS
+		{
+			Deactivate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Close Intake
+				guiName = Close Intake
+				category = Close Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Activate
+			{
+				active = False
+				guiActive = True
+				guiIcon = Open Intake
+				guiName = Open Intake
+				category = Open Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = fuelTank.long_4294411506
+	partName = Part
+	pos = -4.743752,9.097211,-6.893644
+	rot = -0.7071068,-2.071185E-07,8.790918E-08,-0.7071069
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = liquidEngine2_4294411474
+	link = noseCone_4294411372
+	link = Proceduralwing2_4294411182
+	link = Proceduralwing2_4294411102
+	link = strutConnector_4294410686
+	link = strutConnector_4294410574
+	link = strutConnector_4294410462
+	link = radialDecoupler_4294408866
+	sym = fuelTank.long_4294411344
+	srfN = srfAttach,nacelleBody_4294412122
+	attN = top,noseCone_4294411372
+	attN = bottom,liquidEngine2_4294411474
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = liquidEngine2_4294411474
+	partName = Part
+	pos = -4.743752,9.097208,-9.682943
+	rot = 0.7010574,0.09229565,0.09229583,0.7010576
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 4
+	dstg = 2
+	sidx = 4
+	sqor = 4
+	attm = 0
+	sym = liquidEngine2_4294411312
+	attN = top,fuelTank.long_4294411506
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Custom02
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleJettison
+		isEnabled = True
+		EVENTS
+		{
+			Jettison
+			{
+				active = False
+				guiActive = True
+				guiIcon = Jettison
+				guiName = Jettison
+				category = Jettison
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			JettisonAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleGimbal
+		isEnabled = True
+		gimbalLock = False
+		EVENTS
+		{
+			LockGimbal
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lock Gimbal
+				guiName = Lock Gimbal
+				category = Lock Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			FreeGimbal
+			{
+				active = False
+				guiActive = True
+				guiIcon = Free Gimbal
+				guiName = Free Gimbal
+				category = Free Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAnimateHeat
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleAlternator
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = noseCone_4294411372
+	partName = Strut
+	pos = -4.743754,9.097215,-5.018648
+	rot = 0.5000002,0.5000005,0.4999999,0.4999999
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	link = strutConnector_4294411022
+	link = strutConnector_4294410910
+	link = strutConnector_4294410798
+	sym = noseCone_4294411210
+	attN = bottom01,fuelTank.long_4294411506
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = fuelTank.long_4294411344
+	partName = Part
+	pos = 3.971569,9.097211,-6.893644
+	rot = 4.033903E-08,0.7071068,0.707107,1.926561E-08
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = liquidEngine2_4294411312
+	link = noseCone_4294411210
+	link = Proceduralwing2_4294411142
+	link = Proceduralwing2_4294411062
+	link = strutConnector_4294410630
+	link = strutConnector_4294410518
+	link = strutConnector_4294410406
+	link = radialDecoupler_4294408724
+	sym = fuelTank.long_4294411506
+	srfN = srfAttach,nacelleBody_4294411698
+	attN = top,noseCone_4294411210
+	attN = bottom,liquidEngine2_4294411312
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = liquidEngine2_4294411312
+	partName = Part
+	pos = 3.97157,9.097209,-9.682943
+	rot = 0.7010574,-0.09229559,-0.09229577,0.7010577
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 4
+	dstg = 2
+	sidx = 5
+	sqor = 4
+	attm = 0
+	sym = liquidEngine2_4294411474
+	attN = top,fuelTank.long_4294411344
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Custom02
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleJettison
+		isEnabled = True
+		EVENTS
+		{
+			Jettison
+			{
+				active = False
+				guiActive = True
+				guiIcon = Jettison
+				guiName = Jettison
+				category = Jettison
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			JettisonAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleGimbal
+		isEnabled = True
+		gimbalLock = False
+		EVENTS
+		{
+			LockGimbal
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lock Gimbal
+				guiName = Lock Gimbal
+				category = Lock Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			FreeGimbal
+			{
+				active = False
+				guiActive = True
+				guiIcon = Free Gimbal
+				guiName = Free Gimbal
+				category = Free Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAnimateHeat
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleAlternator
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = noseCone_4294411210
+	partName = Strut
+	pos = 3.97157,9.097215,-5.018644
+	rot = 0.5000004,-0.5000005,-0.4999998,0.4999999
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 0
+	link = strutConnector_4294410966
+	link = strutConnector_4294410854
+	link = strutConnector_4294410742
+	sym = noseCone_4294411372
+	attN = bottom01,fuelTank.long_4294411344
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294411182
+	partName = Winglet
+	pos = -5.362875,9.097211,-6.536733
+	rot = 2.107339E-08,0.7071068,0.7071069,-2.10734E-08
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294410110
+	sym = Proceduralwing2_4294411142
+	srfN = srfAttach,fuelTank.long_4294411506
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.575, -0.575, -0.575)
+		tipPosition = (-0.331122, 1.192093E-07, 1.44173)
+		rootScale = (-0.275, -0.275, -0.275)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294411142
+	partName = Winglet
+	pos = 4.590694,9.097211,-6.536733
+	rot = -0.7071073,-2.980232E-08,-2.980236E-08,-0.7071065
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294410070
+	sym = Proceduralwing2_4294411182
+	srfN = srfAttach,fuelTank.long_4294411344
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.575, -0.575, -0.575)
+		tipPosition = (-0.331122, 1.192093E-07, 1.44173)
+		rootScale = (-0.275, -0.275, -0.275)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294411102
+	partName = Winglet
+	pos = -5.365772,9.097211,-7.669065
+	rot = 2.107339E-08,0.7071068,0.7071069,-2.10734E-08
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294410030
+	link = StandardCtrlSrf_4294409950
+	sym = Proceduralwing2_4294411062
+	srfN = srfAttach,fuelTank.long_4294411506
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.4625002, -0.4625002, -0.4625002)
+		tipPosition = (0.02323252, 1.192093E-07, 1.428887)
+		rootScale = (-0.3125001, -0.3125001, -0.3125001)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294411062
+	partName = Winglet
+	pos = 4.593597,9.097211,-7.669065
+	rot = -0.7071073,-2.980232E-08,-2.980236E-08,-0.7071065
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294409990
+	link = StandardCtrlSrf_4294409904
+	sym = Proceduralwing2_4294411102
+	srfN = srfAttach,fuelTank.long_4294411344
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.4625002, -0.4625002, -0.4625002)
+		tipPosition = (0.02323252, 1.192093E-07, 1.428887)
+		rootScale = (-0.3125001, -0.3125001, -0.3125001)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = strutConnector_4294411022
+	partName = StrutConnector
+	pos = -4.625898,9.537054,-4.815786
+	rot = -0.5625438,0.4254932,0.6479951,-0.2874071
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: Proceduralwing2_102; pos: -0.2034435,0.866818,-0.6699693; dir: -0.1825798,0.7779184,-0.6012551
+	sym = strutConnector_4294410966
+	srfN = srfAttach,noseCone_4294411372
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294410966
+	partName = StrutConnector
+	pos = 3.853714,9.537054,-4.815784
+	rot = -0.6479952,0.2874071,0.5625438,-0.4254932
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: Proceduralwing2_105; pos: -0.2034429,0.8668169,0.6699673; dir: -0.1825797,0.7779194,0.6012553
+	sym = strutConnector_4294411022
+	srfN = srfAttach,noseCone_4294411210
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294410910
+	partName = StrutConnector
+	pos = -4.655368,9.427069,-4.677417
+	rot = -0.6673753,0.3015017,0.6589996,-0.1715427
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: Proceduralwing2_96; pos: -1.129171,1.090684,-0.8937656; dir: -0.6250613,0.6037564,-0.4947491
+	sym = strutConnector_4294410854
+	srfN = srfAttach,noseCone_4294411372
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294410854
+	partName = StrutConnector
+	pos = 3.883183,9.427069,-4.677415
+	rot = -0.6589997,0.1715427,0.6673754,-0.3015017
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: Proceduralwing2_99; pos: -1.129161,1.090676,0.8937582; dir: -0.6250614,0.6037568,0.4947491
+	sym = strutConnector_4294410910
+	srfN = srfAttach,noseCone_4294411210
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294410798
+	partName = StrutConnector
+	pos = -4.839799,9.455657,-4.696914
+	rot = -0.6589997,0.1715425,0.6673751,-0.301502
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: Proceduralwing2_97; pos: -0.5025993,0.6623411,0.7933063; dir: -0.4373533,0.5763555,0.6903161
+	sym = strutConnector_4294410742
+	srfN = srfAttach,noseCone_4294411372
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294410742
+	partName = StrutConnector
+	pos = 4.067613,9.455657,-4.696912
+	rot = -0.6673754,0.3015015,0.6589997,-0.1715425
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: Proceduralwing2_100; pos: -0.5025979,0.6623394,-0.793305; dir: -0.4373534,0.5763559,-0.6903166
+	sym = strutConnector_4294410798
+	srfN = srfAttach,noseCone_4294411210
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294410686
+	partName = StrutConnector
+	pos = -5.191792,9.545252,-5.554992
+	rot = -0.6532818,0.2705978,0.2705982,-0.6532813
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: Proceduralwing2_103; pos: -0.2258747,-0.03506829,0.8186063; dir: -0.2657593,-0.04125195,0.9631565
+	sym = strutConnector_4294410630
+	srfN = srfAttach,fuelTank.long_4294411506
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294410630
+	partName = StrutConnector
+	pos = 4.419611,9.545252,-5.554985
+	rot = -0.2705984,0.6532815,0.6532816,-0.270598
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: Proceduralwing2_106; pos: -0.2258757,-0.03506884,-0.8186091; dir: -0.2657594,-0.04125231,-0.9631571
+	sym = strutConnector_4294410686
+	srfN = srfAttach,fuelTank.long_4294411344
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294410574
+	partName = StrutConnector
+	pos = -5.186518,9.539978,-6.715776
+	rot = -0.6532816,0.2705978,0.2705984,-0.6532815
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: Proceduralwing2_52; pos: -0.2875495,0.03643381,0.8388883; dir: -0.3239809,0.04105879,0.9451723
+	sym = strutConnector_4294410518
+	srfN = srfAttach,fuelTank.long_4294411506
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294410518
+	partName = StrutConnector
+	pos = 4.41434,9.539978,-6.715776
+	rot = -0.2705984,0.6532815,0.6532817,-0.2705979
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: Proceduralwing2_80; pos: -0.2875504,0.03643392,-0.8388892; dir: -0.3239813,0.04105859,-0.9451729
+	sym = strutConnector_4294410574
+	srfN = srfAttach,fuelTank.long_4294411344
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294410462
+	partName = StrutConnector
+	pos = -5.185807,9.539268,-7.717456
+	rot = -0.6532816,0.2705978,0.2705984,-0.6532815
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: Proceduralwing2_54; pos: -0.2170503,0.06370892,0.7665967; dir: -0.2715581,0.07971813,0.9591148
+	sym = strutConnector_4294410406
+	srfN = srfAttach,fuelTank.long_4294411506
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = strutConnector_4294410406
+	partName = StrutConnector
+	pos = 4.413622,9.539268,-7.717456
+	rot = -0.2705984,0.6532815,0.6532817,-0.2705979
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: Proceduralwing2_82; pos: -0.2170506,0.06370907,-0.7665983; dir: -0.2715583,0.07971796,-0.9591155
+	sym = strutConnector_4294410462
+	srfN = srfAttach,fuelTank.long_4294411344
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294410350
+	partName = Winglet
+	pos = -7.788002,9.067731,-5.284893
+	rot = 0,0.7071068,0.7071068,0
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = Proceduralwing2_4294410310
+	srfN = srfAttach,Proceduralwing2_4294412594
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.7875, -0.7875, -0.7875)
+		tipPosition = (-1.323863, 1.192093E-07, 2.304312)
+		rootScale = (-0.4374999, -0.4374999, -0.4374999)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294410310
+	partName = Winglet
+	pos = 7.015805,9.067731,-5.284887
+	rot = -0.7071069,-3.090862E-08,-3.090861E-08,-0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = Proceduralwing2_4294410350
+	srfN = srfAttach,Proceduralwing2_4294412554
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.7875, -0.7875, -0.7875)
+		tipPosition = (-1.323863, 1.192093E-07, 2.304312)
+		rootScale = (-0.4374999, -0.4374999, -0.4374999)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294410270
+	partName = Winglet
+	pos = -7.783255,9.067732,-4.371702
+	rot = -2.394391E-15,0.7071068,0.7071068,1.138317E-15
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = structuralIBeam3_4294409302
+	sym = Proceduralwing2_4294410230
+	srfN = srfAttach,Proceduralwing2_4294412674
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.775, -0.775, -0.775)
+		tipPosition = (-1.892486, 1.192093E-07, 2.318996)
+		rootScale = (-0.4374999, -0.4374999, -0.4374999)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294410230
+	partName = Winglet
+	pos = 7.01106,9.067733,-4.371685
+	rot = -0.7071069,-3.090861E-08,-3.090861E-08,-0.7071067
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = structuralIBeam3_4294409322
+	sym = Proceduralwing2_4294410270
+	srfN = srfAttach,Proceduralwing2_4294412634
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.775, -0.775, -0.775)
+		tipPosition = (-1.892486, 1.192093E-07, 2.318996)
+		rootScale = (-0.4374999, -0.4374999, -0.4374999)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294410190
+	partName = Winglet
+	pos = -7.79548,9.067731,-6.094133
+	rot = 0,0.7071068,0.7071068,0
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = Proceduralwing2_4294410150
+	srfN = srfAttach,Proceduralwing2_4294412514
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.825, -0.825, -0.825)
+		tipPosition = (-0.8139805, 1.192093E-07, 2.300758)
+		rootScale = (-0.5125, -0.5125, -0.5125)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294410150
+	partName = Winglet
+	pos = 7.023286,9.067731,-6.094127
+	rot = -0.7071069,-3.090862E-08,-3.090861E-08,-0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = Proceduralwing2_4294410190
+	srfN = srfAttach,Proceduralwing2_4294412474
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.825, -0.825, -0.825)
+		tipPosition = (-0.8139805, 1.192093E-07, 2.300758)
+		rootScale = (-0.5125, -0.5125, -0.5125)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294410110
+	partName = Winglet
+	pos = -7.804604,9.097211,-6.867862
+	rot = -3.853125E-08,0.7071068,0.7071068,-8.067806E-08
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = Proceduralwing2_4294410070
+	srfN = srfAttach,Proceduralwing2_4294411182
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.8375, -0.8375, -0.8375)
+		tipPosition = (-0.3348511, 1.192093E-07, 2.303326)
+		rootScale = (-0.575, -0.575, -0.575)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294410070
+	partName = Winglet
+	pos = 7.032427,9.097211,-6.867862
+	rot = -0.707107,-2.980234E-08,-2.980232E-08,-0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = Proceduralwing2_4294410110
+	srfN = srfAttach,Proceduralwing2_4294411142
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.8375, -0.8375, -0.8375)
+		tipPosition = (-0.3348511, 1.192093E-07, 2.303326)
+		rootScale = (-0.575, -0.575, -0.575)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294410030
+	partName = Winglet
+	pos = -7.794661,9.097211,-7.645839
+	rot = -3.853125E-08,0.7071068,0.7071068,-8.067806E-08
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = Proceduralwing2_4294409990
+	srfN = srfAttach,Proceduralwing2_4294411102
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.8625, -0.8625, -0.8625)
+		tipPosition = (0.1893576, 1.192093E-07, 2.324547)
+		rootScale = (-0.4625002, -0.4625002, -0.4625002)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294409990
+	partName = Winglet
+	pos = 7.02248,9.097211,-7.645839
+	rot = -0.707107,-2.980234E-08,-2.980232E-08,-0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = Proceduralwing2_4294410030
+	srfN = srfAttach,Proceduralwing2_4294411062
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.8625, -0.8625, -0.8625)
+		tipPosition = (0.1893576, 1.192093E-07, 2.324547)
+		rootScale = (-0.4625002, -0.4625002, -0.4625002)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = StandardCtrlSrf_4294409950
+	partName = ControlSurface
+	pos = -6.609759,9.097211,-8.086449
+	rot = -0.0194486,-0.7068394,-0.7068393,0.01944848
+	attRot = 0,-0.7071068,4.214685E-08,0.7071068
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = StandardCtrlSrf_4294409904
+	srfN = srfAttach,Proceduralwing2_4294411102
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = StandardCtrlSrf_4294409904
+	partName = ControlSurface
+	pos = 5.837583,9.097211,-8.086449
+	rot = -0.01944867,0.7068396,0.7068392,0.01944838
+	attRot = 0,0.7071068,-4.214685E-08,0.7071068
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = StandardCtrlSrf_4294409950
+	srfN = srfAttach,Proceduralwing2_4294411062
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = structuralWing_4294409858
+	partName = Winglet
+	pos = -0.3860938,9.403437,-11.86539
+	rot = -0.4726197,0.5241799,0.4743868,-0.5261401
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = smallCtrlSrf_4294409830
+	link = smallCtrlSrf_4294409786
+	link = Proceduralwing2_4294409666
+	link = Proceduralwing2_4294409626
+	srfN = srfAttach,airplaneTail_4294413678
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = smallCtrlSrf_4294409830
+	partName = ControlSurface
+	pos = -0.3919232,10.4744,-13.88565
+	rot = -0.4624691,0.5169654,0.4802643,-0.5368571
+	attRot = 1.776357E-15,-0.7071067,0.7071068,-7.21645E-16
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	srfN = srfAttach,structuralWing_4294409858
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = smallCtrlSrf_4294409786
+	partName = ControlSurface
+	pos = -0.3919233,9.690398,-13.79813
+	rot = -0.4624696,0.5169649,0.4802646,-0.5368569
+	attRot = 1.776357E-15,-0.7071067,0.7071068,-7.21645E-16
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	srfN = srfAttach,structuralWing_4294409858
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = linearRcs_4294409742
+	partName = Part
+	pos = -0.3860937,9.168535,-14.11403
+	rot = -1.154037E-08,0.9985589,-0.05366938,6.194312E-09
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	srfN = srfAttach,airplaneTail_4294413678
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4294409704
+	partName = Part
+	pos = -0.3860937,8.884811,-14.1139
+	rot = -0.9987082,-8.707273E-08,2.183509E-10,0.05081507
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	srfN = srfAttach,airplaneTail_4294413678
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294409666
+	partName = Winglet
+	pos = -0.4795039,10.12254,-12.70821
+	rot = 0.66963,-0.0003757731,-0.002837659,0.7426896
+	attRot = -8.881784E-16,0.9999999,0,1.523875E-16
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = smallCtrlSrf_4294409542
+	link = smallCtrlSrf_4294409454
+	link = smallCtrlSrf_4294409410
+	sym = Proceduralwing2_4294409626
+	srfN = srfAttach,structuralWing_4294409858
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.5875, -0.5875, -0.5875)
+		tipPosition = (-0.8520763, 1.192093E-07, 1.964431)
+		rootScale = (-0.1750006, -0.1750006, -0.1750006)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294409626
+	partName = Winglet
+	pos = -0.2926832,10.12254,-12.70821
+	rot = -0.002837652,0.7426895,0.6696301,-0.0003756928
+	attRot = 8.881784E-16,-0.9999999,0,1.523875E-16
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = smallCtrlSrf_4294409586
+	link = smallCtrlSrf_4294409498
+	link = smallCtrlSrf_4294409366
+	sym = Proceduralwing2_4294409666
+	srfN = srfAttach,structuralWing_4294409858
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.5875, -0.5875, -0.5875)
+		tipPosition = (-0.8520763, 1.192093E-07, 1.964431)
+		rootScale = (-0.1750006, -0.1750006, -0.1750006)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = smallCtrlSrf_4294409586
+	partName = ControlSurface
+	pos = -1.981898,9.976917,-13.80667
+	rot = 0.06896611,-0.739486,-0.667003,-0.05926069
+	attRot = 0.7071066,-5.202826E-16,-1.256074E-15,-0.7071066
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = smallCtrlSrf_4294409542
+	srfN = srfAttach,Proceduralwing2_4294409626
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = smallCtrlSrf_4294409542
+	partName = ControlSurface
+	pos = 1.209701,9.976917,-13.80667
+	rot = -0.6670036,-0.05926061,0.06896619,-0.7394854
+	attRot = -0.7071066,5.202826E-16,1.256074E-15,-0.7071066
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = smallCtrlSrf_4294409586
+	srfN = srfAttach,Proceduralwing2_4294409666
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = smallCtrlSrf_4294409498
+	partName = ControlSurface
+	pos = -1.233316,9.982388,-13.6687
+	rot = -0.06896611,0.739486,0.667003,0.05926069
+	attRot = -0.7071067,1.14832E-15,1.14832E-15,0.7071067
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = smallCtrlSrf_4294409454
+	srfN = srfAttach,Proceduralwing2_4294409626
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = smallCtrlSrf_4294409454
+	partName = ControlSurface
+	pos = 0.4611266,9.982388,-13.6687
+	rot = -0.6670032,-0.05926073,0.06896619,-0.7394856
+	attRot = 0.7071067,-1.14832E-15,-1.14832E-15,0.7071067
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = smallCtrlSrf_4294409498
+	srfN = srfAttach,Proceduralwing2_4294409666
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = smallCtrlSrf_4294409410
+	partName = ControlSurface
+	pos = 2.028381,9.944842,-13.9493
+	rot = -0.001044451,0.7426791,0.6696354,-0.003929892
+	attRot = 2.107342E-08,0.7071066,-2.107342E-08,0.7071066
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = smallCtrlSrf_4294409366
+	srfN = srfAttach,Proceduralwing2_4294409666
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = smallCtrlSrf_4294409366
+	partName = ControlSurface
+	pos = -2.800579,9.944841,-13.9493
+	rot = -0.6696358,0.003929844,0.001044413,-0.7426789
+	attRot = -2.107342E-08,-0.7071066,2.107342E-08,0.7071066
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = smallCtrlSrf_4294409410
+	srfN = srfAttach,Proceduralwing2_4294409626
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = structuralIBeam3_4294409322
+	partName = Part
+	pos = 10.27792,9.087034,-6.859115
+	rot = -0.5020087,-0.4979832,0.4979829,0.5020092
+	attRot = -0.4999999,0.4999999,-0.5,-0.4999999
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294409282
+	sym = structuralIBeam3_4294409302
+	srfN = srfAttach,Proceduralwing2_4294410230
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = structuralIBeam3_4294409302
+	partName = Part
+	pos = -11.0501,9.087035,-6.859138
+	rot = -0.5020088,0.4979832,-0.4979828,0.5020092
+	attRot = 0.4999999,-0.4999999,0.5,-0.4999999
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	link = Proceduralwing2_4294409242
+	sym = structuralIBeam3_4294409322
+	srfN = srfAttach,Proceduralwing2_4294410270
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294409282
+	partName = Winglet
+	pos = 10.22973,9.199312,-6.851194
+	rot = -0.5020086,-0.4979832,0.4979834,0.5020089
+	attRot = 0,0,0,1
+	mir = 1,1,-1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = Proceduralwing2_4294409242
+	srfN = srfAttach,structuralIBeam3_4294409322
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.6, -0.6, -0.6)
+		tipPosition = (0.6306298, 1.192093E-07, -0.2553858)
+		rootScale = (-0.2375, -0.2375, -0.2375)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = Proceduralwing2_4294409242
+	partName = Winglet
+	pos = -11.00192,9.199313,-6.851215
+	rot = 0.4979835,0.5020087,-0.5020086,-0.4979832
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = Proceduralwing2_4294409282
+	srfN = srfAttach,structuralIBeam3_4294409302
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = WingManipulator
+		isEnabled = True
+		IgnoreSnapping = False
+		SegmentRoot = False
+		IsAttached = True
+		tipScale = (-0.6, -0.6, -0.6)
+		tipPosition = (0.6306298, 1.192093E-07, -0.2553858)
+		rootScale = (-0.2375, -0.2375, -0.2375)
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = SmallGearBay_4294409202
+	partName = Part
+	pos = -3.614202,8.294387,-7.480724
+	rot = 1.264406E-07,1.341105E-07,1.515683E-07,1
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = SmallGearBay_4294409034
+	srfN = srfAttach,nacelleBody_4294412122
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleLandingGear
+		isEnabled = True
+		brakesEngaged = False
+		storedGearState = UNDEFINED
+		storedAnimationSpeed = 0
+		storedAnimationTime = 0
+		EVENTS
+		{
+			LowerLandingGear
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lower Gear
+				guiName = Lower Gear
+				category = Lower Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			RaiseLandingGear
+			{
+				active = True
+				guiActive = True
+				guiIcon = Raise Gear
+				guiName = Raise Gear
+				category = Raise Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Gear
+			}
+			BrakesAction
+			{
+				actionGroup = Brakes
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleLight
+		isEnabled = True
+		isOn = False
+		EVENTS
+		{
+			LightsOff
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lights Off
+				guiName = Lights Off
+				category = Lights Off
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			LightsOn
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lights On
+				guiName = Lights On
+				category = Lights On
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleLightAction
+			{
+				actionGroup = Light
+			}
+			LightOnAction
+			{
+				actionGroup = None
+			}
+			LightOffAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = SmallGearBay_4294409034
+	partName = Part
+	pos = 2.842015,8.294387,-7.480724
+	rot = 8.42937E-08,1.341104E-07,1.366671E-07,1
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 2
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = SmallGearBay_4294409202
+	srfN = srfAttach,nacelleBody_4294411698
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleLandingGear
+		isEnabled = True
+		brakesEngaged = False
+		storedGearState = UNDEFINED
+		storedAnimationSpeed = 0
+		storedAnimationTime = 0
+		EVENTS
+		{
+			LowerLandingGear
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lower Gear
+				guiName = Lower Gear
+				category = Lower Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			RaiseLandingGear
+			{
+				active = True
+				guiActive = True
+				guiIcon = Raise Gear
+				guiName = Raise Gear
+				category = Raise Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Gear
+			}
+			BrakesAction
+			{
+				actionGroup = Brakes
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleLight
+		isEnabled = True
+		isOn = False
+		EVENTS
+		{
+			LightsOff
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lights Off
+				guiName = Lights Off
+				category = Lights Off
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			LightsOn
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lights On
+				guiName = Lights On
+				category = Lights On
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleLightAction
+			{
+				actionGroup = Light
+			}
+			LightOnAction
+			{
+				actionGroup = None
+			}
+			LightOffAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = radialDecoupler_4294408866
+	partName = Part
+	pos = -4.578247,9.714896,-7.929641
+	rot = 0.4304594,-0.5609856,-0.5609858,0.4304592
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 3
+	sidx = 4
+	sqor = 2
+	attm = 1
+	link = solidBooster_4294408822
+	sym = radialDecoupler_4294408724
+	srfN = srfAttach,fuelTank.long_4294411506
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleAnchoredDecoupler
+		isEnabled = True
+		isDecoupled = False
+		EVENTS
+		{
+			Decouple
+			{
+				active = True
+				guiActive = True
+				guiIcon = Decouple
+				guiName = Decouple
+				category = Decouple
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			DecoupleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = solidBooster_4294408822
+	partName = Part
+	pos = -4.578245,10.51186,-8.001604
+	rot = 5.161415E-07,0.7071068,0.7071068,-3.930436E-08
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 3
+	dstg = 4
+	sidx = 0
+	sqor = 3
+	attm = 1
+	link = noseCone_4294408752
+	link = sepMotor1_4294408582
+	link = sepMotor1_4294408506
+	sym = solidBooster_4294408680
+	srfN = srfAttach,radialDecoupler_4294408866
+	attN = top,noseCone_4294408752
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0.9
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAnimateHeat
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = noseCone_4294408752
+	partName = Strut
+	pos = -4.578246,10.51186,-6.719768
+	rot = -0.4304592,0.5609854,0.560986,-0.4304596
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 4
+	dstg = 4
+	sidx = -1
+	sqor = -1
+	attm = 0
+	sym = noseCone_4294408610
+	attN = bottom01,solidBooster_4294408822
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = radialDecoupler_4294408724
+	partName = Part
+	pos = 3.806057,9.714896,-7.929641
+	rot = -0.560986,0.4304592,0.4304594,-0.5609854
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 3
+	sidx = 5
+	sqor = 2
+	attm = 1
+	link = solidBooster_4294408680
+	sym = radialDecoupler_4294408866
+	srfN = srfAttach,fuelTank.long_4294411344
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleAnchoredDecoupler
+		isEnabled = True
+		isDecoupled = False
+		EVENTS
+		{
+			Decouple
+			{
+				active = True
+				guiActive = True
+				guiIcon = Decouple
+				guiName = Decouple
+				category = Decouple
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			DecoupleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = solidBooster_4294408680
+	partName = Part
+	pos = 3.806057,10.51186,-8.001604
+	rot = -5.406049E-07,0.707107,0.707107,6.376783E-08
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 3
+	dstg = 4
+	sidx = 1
+	sqor = 3
+	attm = 1
+	link = noseCone_4294408610
+	link = sepMotor1_4294408544
+	link = sepMotor1_4294408468
+	sym = solidBooster_4294408822
+	srfN = srfAttach,radialDecoupler_4294408724
+	attN = top,noseCone_4294408610
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0.9
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAnimateHeat
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = noseCone_4294408610
+	partName = Strut
+	pos = 3.806056,10.51186,-6.719768
+	rot = 0.4304594,0.5609856,0.560986,0.4304596
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 4
+	dstg = 4
+	sidx = -1
+	sqor = -1
+	attm = 0
+	sym = noseCone_4294408752
+	attN = bottom01,solidBooster_4294408680
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = sepMotor1_4294408582
+	partName = Part
+	pos = -5.171308,10.51186,-7.547426
+	rot = 0.4981512,0.4981515,-0.5018421,-0.5018421
+	attRot = 0,-0.9999999,5.960464E-08,-1.776357E-15
+	mir = 1,1,1
+	istg = 2
+	dstg = 4
+	sidx = 2
+	sqor = 2
+	attm = 1
+	sym = sepMotor1_4294408544
+	srfN = srfAttach,solidBooster_4294408822
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = sepMotor1_4294408544
+	partName = Part
+	pos = 4.399118,10.51186,-7.547426
+	rot = -0.4981514,0.4981514,-0.5018421,0.5018421
+	attRot = 0,0.9999999,-5.960464E-08,-1.776357E-15
+	mir = 1,1,1
+	istg = 2
+	dstg = 4
+	sidx = 3
+	sqor = 2
+	attm = 1
+	sym = sepMotor1_4294408582
+	srfN = srfAttach,solidBooster_4294408680
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = sepMotor1_4294408506
+	partName = Part
+	pos = -3.986497,10.51186,-7.595228
+	rot = 0.4981517,-0.4981517,0.5018417,-0.5018418
+	attRot = 0,-0.9999999,5.960464E-08,-1.776357E-15
+	mir = 1,1,1
+	istg = 2
+	dstg = 4
+	sidx = 0
+	sqor = 2
+	attm = 1
+	sym = sepMotor1_4294408468
+	srfN = srfAttach,solidBooster_4294408822
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = sepMotor1_4294408468
+	partName = Part
+	pos = 3.21431,10.51186,-7.595228
+	rot = -0.4981518,-0.4981518,0.5018417,0.5018417
+	attRot = 0,0.9999999,-5.960464E-08,-1.776357E-15
+	mir = 1,1,1
+	istg = 2
+	dstg = 4
+	sidx = 1
+	sqor = 2
+	attm = 1
+	sym = sepMotor1_4294408506
+	srfN = srfAttach,solidBooster_4294408680
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
