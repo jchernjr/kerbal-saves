@@ -1,0 +1,611 @@
+ship = J-0038-0
+version = 0.25.0
+description = Experimental ion-engine powered probe.
+type = VAB
+PART
+{
+	part = probeCoreSphere_4293635866
+	partName = Part
+	pos = 0.02659237,10.96272,-0.09235508
+	rot = 0,0,0,1
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 0
+	modCost = 0
+	link = xenonTankRadial_4293635830
+	link = ionEngine_4293635530
+	link = batteryPack_4293635802
+	link = batteryPack_4293579264
+	link = batteryPack_4293579226
+	link = batteryPack_4293579188
+	link = batteryPack_4293579150
+	link = batteryPack_4293579112
+	link = batteryPack_4293579074
+	link = batteryPack_4293579036
+	attN = bottom,ionEngine_4293635530
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleCommand
+		isEnabled = True
+		controlSrcStatusText = 
+		EVENTS
+		{
+			MakeReference
+			{
+				active = True
+				guiActive = True
+				guiIcon = Control From Here
+				guiName = Control From Here
+				category = Control From Here
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			RenameVessel
+			{
+				active = True
+				guiActive = True
+				guiIcon = Rename Vessel
+				guiName = Rename Vessel
+				category = Rename Vessel
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleReactionWheel
+		isEnabled = True
+		stateString = Active
+		WheelState = Active
+		EVENTS
+		{
+			OnToggle
+			{
+				active = True
+				guiActive = True
+				guiIcon = Toggle Torque
+				guiName = Toggle Torque
+				category = Toggle Torque
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			Activate
+			{
+				actionGroup = None
+			}
+			Deactivate
+			{
+				actionGroup = None
+			}
+			Toggle
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleSAS
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleTripLogger
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+		Surfaced
+		{
+		}
+		Flew
+		{
+		}
+		FlewBy
+		{
+		}
+		Orbited
+		{
+		}
+		SubOrbited
+		{
+		}
+	}
+	RESOURCE
+	{
+		name = ElectricCharge
+		amount = 10
+		maxAmount = 10
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = xenonTankRadial_4293635830
+	partName = Part
+	pos = 0.02973485,11.42052,-0.06291176
+	rot = 0.4446265,-0.5549462,0.5115601,0.4823364
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 1
+	modCost = 0
+	srfN = srfAttach,probeCoreSphere_4293635866
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	RESOURCE
+	{
+		name = XenonGas
+		amount = 400
+		maxAmount = 400
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = ionEngine_4293635530
+	partName = Part
+	pos = 0.02659237,10.41082,-0.09235508
+	rot = 0,0,0,1
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 0
+	modCost = 0
+	attN = top,probeCoreSphere_4293635866
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		staged = False
+		flameout = False
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		thrustPercentage = 100
+		manuallyOverridden = False
+		thrustPercentage_UIFlight
+		{
+			controlEnabled = True
+			minValue = 0
+			maxValue = 100
+			stepIncrement = 0.5
+		}
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = FXModuleAnimateThrottle
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleTestSubject
+		isEnabled = True
+		EVENTS
+		{
+			RunTestEvent
+			{
+				active = False
+				guiActive = True
+				guiIcon = Run Test
+				guiName = Run Test
+				category = Run Test
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = batteryPack_4293635802
+	partName = Part
+	pos = -0.2997304,10.84901,-0.09235506
+	rot = 0.2610201,-0.657167,-0.2610202,-0.657167
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 1
+	modCost = 0
+	sym = batteryPack_4293579264
+	sym = batteryPack_4293579226
+	sym = batteryPack_4293579188
+	sym = batteryPack_4293579150
+	sym = batteryPack_4293579112
+	sym = batteryPack_4293579074
+	sym = batteryPack_4293579036
+	srfN = srfAttach,probeCoreSphere_4293635866
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	RESOURCE
+	{
+		name = ElectricCharge
+		amount = 100
+		maxAmount = 100
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = batteryPack_4293579264
+	partName = Part
+	pos = -0.2041527,10.84901,0.13839
+	rot = 0.1412631,-0.8586301,-0.3410393,-0.3556562
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 1
+	modCost = 0
+	sym = batteryPack_4293635802
+	sym = batteryPack_4293579226
+	sym = batteryPack_4293579188
+	sym = batteryPack_4293579150
+	sym = batteryPack_4293579112
+	sym = batteryPack_4293579074
+	sym = batteryPack_4293579036
+	srfN = srfAttach,probeCoreSphere_4293635866
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	RESOURCE
+	{
+		name = ElectricCharge
+		amount = 100
+		maxAmount = 100
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = batteryPack_4293579226
+	partName = Part
+	pos = 0.02659237,10.84901,0.2339677
+	rot = -2.107342E-08,-0.9293745,-0.3691382,0
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 1
+	modCost = 0
+	sym = batteryPack_4293635802
+	sym = batteryPack_4293579264
+	sym = batteryPack_4293579188
+	sym = batteryPack_4293579150
+	sym = batteryPack_4293579112
+	sym = batteryPack_4293579074
+	sym = batteryPack_4293579036
+	srfN = srfAttach,probeCoreSphere_4293635866
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	RESOURCE
+	{
+		name = ElectricCharge
+		amount = 100
+		maxAmount = 100
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = batteryPack_4293579188
+	partName = Part
+	pos = 0.2573375,10.84901,0.13839
+	rot = -0.1412631,-0.8586301,-0.3410393,0.3556562
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 1
+	modCost = 0
+	sym = batteryPack_4293635802
+	sym = batteryPack_4293579264
+	sym = batteryPack_4293579226
+	sym = batteryPack_4293579150
+	sym = batteryPack_4293579112
+	sym = batteryPack_4293579074
+	sym = batteryPack_4293579036
+	srfN = srfAttach,probeCoreSphere_4293635866
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	RESOURCE
+	{
+		name = ElectricCharge
+		amount = 100
+		maxAmount = 100
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = batteryPack_4293579150
+	partName = Part
+	pos = 0.3529152,10.84901,-0.09235513
+	rot = -0.2610202,-0.657167,-0.2610201,0.657167
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 1
+	modCost = 0
+	sym = batteryPack_4293635802
+	sym = batteryPack_4293579264
+	sym = batteryPack_4293579226
+	sym = batteryPack_4293579188
+	sym = batteryPack_4293579112
+	sym = batteryPack_4293579074
+	sym = batteryPack_4293579036
+	srfN = srfAttach,probeCoreSphere_4293635866
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	RESOURCE
+	{
+		name = ElectricCharge
+		amount = 100
+		maxAmount = 100
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = batteryPack_4293579112
+	partName = Part
+	pos = 0.2573374,10.84901,-0.3231002
+	rot = -0.3410393,-0.3556561,-0.141263,0.8586301
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 1
+	modCost = 0
+	sym = batteryPack_4293635802
+	sym = batteryPack_4293579264
+	sym = batteryPack_4293579226
+	sym = batteryPack_4293579188
+	sym = batteryPack_4293579150
+	sym = batteryPack_4293579074
+	sym = batteryPack_4293579036
+	srfN = srfAttach,probeCoreSphere_4293635866
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	RESOURCE
+	{
+		name = ElectricCharge
+		amount = 100
+		maxAmount = 100
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = batteryPack_4293579074
+	partName = Part
+	pos = 0.02659233,10.84901,-0.4186779
+	rot = -0.3691382,0,2.107342E-08,0.9293745
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 1
+	modCost = 0
+	sym = batteryPack_4293635802
+	sym = batteryPack_4293579264
+	sym = batteryPack_4293579226
+	sym = batteryPack_4293579188
+	sym = batteryPack_4293579150
+	sym = batteryPack_4293579112
+	sym = batteryPack_4293579036
+	srfN = srfAttach,probeCoreSphere_4293635866
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	RESOURCE
+	{
+		name = ElectricCharge
+		amount = 100
+		maxAmount = 100
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = batteryPack_4293579036
+	partName = Part
+	pos = -0.2041528,10.84901,-0.3231001
+	rot = -0.3410392,0.3556564,0.1412632,0.8586301
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 1
+	modCost = 0
+	sym = batteryPack_4293635802
+	sym = batteryPack_4293579264
+	sym = batteryPack_4293579226
+	sym = batteryPack_4293579188
+	sym = batteryPack_4293579150
+	sym = batteryPack_4293579112
+	sym = batteryPack_4293579074
+	srfN = srfAttach,probeCoreSphere_4293635866
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	RESOURCE
+	{
+		name = ElectricCharge
+		amount = 100
+		maxAmount = 100
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		flowMode = Both
+	}
+}
