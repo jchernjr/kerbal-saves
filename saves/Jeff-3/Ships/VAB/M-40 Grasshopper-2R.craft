@@ -1,8 +1,8 @@
-ship = M-41 Grasshopper-2B
+ship = M-40 Grasshopper-2R
 version = 1.1.3
-description = Going back closer to original design
+description = Adapted version of Grasshopper-2 that is taller and has a rocket engine (for testing, but also for emergencies where we need to go up fast) -- also for scouting nearby locations.
 type = VAB
-size = 4.726948,3.310516,4.726949
+size = 4.597417,3.773903,4.597418
 PART
 {
 	part = mk1pod_4294694968
@@ -25,8 +25,8 @@ PART
 	modMass = 0
 	modSize = (0.0, 0.0, 0.0)
 	link = parachuteSingle_4294422798
-	link = Mk1FuselageStructural_4294512896
-	attN = bottom,Mk1FuselageStructural_4294512896
+	link = fuelTankSmallFlat_4294648118
+	attN = bottom,fuelTankSmallFlat_4294648118
 	attN = top,parachuteSingle_4294422798
 	EVENTS
 	{
@@ -687,11 +687,11 @@ PART
 }
 PART
 {
-	part = Mk1FuselageStructural_4294512896
+	part = fuelTankSmallFlat_4294648118
 	partName = Part
-	pos = 0,13.65746,0
+	pos = 0,14.28246,0
 	attPos = 0,0,0
-	attPos0 = 0,-1.342538,0
+	attPos0 = 0,-0.7175379,0
 	rot = 0,0,0,1
 	attRot = 0,0,0,1
 	attRot0 = 0,0,0,1
@@ -706,11 +706,13 @@ PART
 	modCost = 0
 	modMass = 0
 	modSize = (0.0, 0.0, 0.0)
+	link = liquidEngine2_4294651170
+	link = miniFuselage_4294431568
+	link = miniFuselage_4294646610
+	link = miniFuselage_4294646416
 	link = miniFuselage_4294646222
-	link = miniFuselage_4294483440
-	link = miniFuselage_4294483246
-	link = miniFuselage_4294483052
 	attN = top,mk1pod_4294694968
+	attN = bottom,liquidEngine2_4294651170
 	EVENTS
 	{
 	}
@@ -720,17 +722,1463 @@ PART
 	PARTDATA
 	{
 	}
+	RESOURCE
+	{
+		name = LiquidFuel
+		amount = 45
+		maxAmount = 45
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		isVisible = True
+		flowMode = Both
+	}
+	RESOURCE
+	{
+		name = Oxidizer
+		amount = 55
+		maxAmount = 55
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		isVisible = True
+		flowMode = Both
+	}
+}
+PART
+{
+	part = liquidEngine2_4294651170
+	partName = Part
+	pos = 0,13.06814,0
+	attPos = 0,0,0
+	attPos0 = 0,-1.214326,0
+	rot = 0,0,0,1
+	attRot = 0,0,0,1
+	attRot0 = 0,0,0,1
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 2
+	dstg = 0
+	sidx = 0
+	sqor = 2
+	sepI = 0
+	attm = 0
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	attN = top,fuelTankSmallFlat_4294648118
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		staged = False
+		flameout = False
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		thrustPercentage = 100
+		manuallyOverridden = False
+		stagingEnabled = True
+		thrustPercentage_UIFlight
+		{
+			controlEnabled = True
+			minValue = 0
+			maxValue = 100
+			stepIncrement = 0.5
+		}
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleJettison
+		isEnabled = True
+		isJettisoned = True
+		shroudHideOverride = False
+		stagingEnabled = True
+		shroudHideOverride_UIFlight
+		{
+			controlEnabled = True
+		}
+		EVENTS
+		{
+			Jettison
+			{
+				active = False
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Jettison Shroud
+				guiName = Jettison Shroud
+				category = Jettison Shroud
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Shroud: Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			JettisonAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleGimbal
+		isEnabled = True
+		gimbalLock = False
+		gimbalLimiter = 100
+		currentShowToggles = False
+		enableYaw = True
+		enablePitch = True
+		enableRoll = True
+		gimbalActive = False
+		stagingEnabled = True
+		gimbalLock_UIFlight
+		{
+			controlEnabled = True
+		}
+		gimbalLimiter_UIFlight
+		{
+			controlEnabled = True
+			minValue = 0
+			maxValue = 100
+			stepIncrement = 1
+		}
+		enableYaw_UIFlight
+		{
+			controlEnabled = True
+		}
+		enablePitch_UIFlight
+		{
+			controlEnabled = True
+		}
+		enableRoll_UIFlight
+		{
+			controlEnabled = True
+		}
+		EVENTS
+		{
+			ToggleToggles
+			{
+				active = True
+				guiActive = True
+				guiActiveEditor = True
+				guiActiveUncommand = False
+				guiIcon = Actuation Toggles
+				guiName = Show Actuation Toggles
+				category = Actuation Toggles
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+			LockAction
+			{
+				actionGroup = None
+			}
+			FreeAction
+			{
+				actionGroup = None
+			}
+			TogglePitchAction
+			{
+				actionGroup = None
+			}
+			ToggleYawAction
+			{
+				actionGroup = None
+			}
+			ToggleRollAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = FXModuleAnimateThrottle
+		isEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleAlternator
+		isEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleSurfaceFX
+		isEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleTestSubject
+		isEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			RunTestEvent
+			{
+				active = False
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Run Test
+				guiName = Run Test
+				category = Run Test
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	RESOURCE
+	{
+		name = ElectricCharge
+		amount = 0
+		maxAmount = 0.12
+		flowState = True
+		isTweakable = False
+		hideFlow = True
+		isVisible = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = miniFuselage_4294431568
+	partName = Part
+	pos = -0.9347199,14.01706,3.70574E-08
+	attPos = 0,0,0
+	attPos0 = -0.9347199,-0.2654057,3.70574E-08
+	rot = 0,0,6.170698E-08,1
+	attRot = 0,0,0,1
+	attRot0 = 0,0,6.170698E-08,1
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	sepI = 0
+	attm = 1
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	link = miniIntake_4294431534
+	link = miniJetEngine_4294431494
+	link = trussPiece1x_4294642912
+	sym = miniFuselage_4294646610
+	sym = miniFuselage_4294646416
+	sym = miniFuselage_4294646222
+	srfN = srfAttach,fuelTankSmallFlat_4294648118
+	attN = top,miniIntake_4294431534
+	attN = bottom,miniJetEngine_4294431494
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	RESOURCE
+	{
+		name = LiquidFuel
+		amount = 30.0000011920929
+		maxAmount = 50
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		isVisible = True
+		flowMode = Both
+	}
+}
+PART
+{
+	part = miniIntake_4294431534
+	partName = Part
+	pos = -0.93472,14.48581,3.70574E-08
+	attPos = 0,0,0
+	attPos0 = 0,0.46875,0
+	rot = 0,0,6.170698E-08,1
+	attRot = 0,0,0,1
+	attRot0 = 0,0,0,1
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	sepI = 0
+	attm = 0
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	sym = miniIntake_4294646576
+	sym = miniIntake_4294646382
+	sym = miniIntake_4294646188
+	attN = bottom01,miniFuselage_4294431568
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = ModuleResourceIntake
+		isEnabled = True
+		intakeEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			Deactivate
+			{
+				active = True
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Close Intake
+				guiName = Close Intake
+				category = Close Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Activate
+			{
+				active = False
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Open Intake
+				guiName = Open Intake
+				category = Open Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	RESOURCE
+	{
+		name = IntakeAir
+		amount = 0.5
+		maxAmount = 0.5
+		flowState = True
+		isTweakable = False
+		hideFlow = False
+		isVisible = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = miniJetEngine_4294431494
+	partName = Part
+	pos = -0.9347199,13.54831,3.70574E-08
+	attPos = 0,0,0
+	attPos0 = 0,-0.46875,0
+	rot = 0,0,6.170698E-08,1
+	attRot = 0,0,0,1
+	attRot0 = 0,0,0,1
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 1
+	dstg = 0
+	sidx = 0
+	sqor = 1
+	sepI = 0
+	attm = 0
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	sym = miniJetEngine_4294646536
+	sym = miniJetEngine_4294646342
+	sym = miniJetEngine_4294646148
+	attN = top,miniFuselage_4294431568
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = ModuleEnginesFX
+		isEnabled = True
+		staged = False
+		flameout = False
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		thrustPercentage = 100
+		manuallyOverridden = False
+		stagingEnabled = True
+		thrustPercentage_UIFlight
+		{
+			controlEnabled = True
+			minValue = 0
+			maxValue = 100
+			stepIncrement = 0.5
+		}
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAlternator
+		isEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleTestSubject
+		isEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			RunTestEvent
+			{
+				active = False
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Run Test
+				guiName = Run Test
+				category = Run Test
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleSurfaceFX
+		isEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	RESOURCE
+	{
+		name = ElectricCharge
+		amount = 0
+		maxAmount = 0.02
+		flowState = True
+		isTweakable = False
+		hideFlow = True
+		isVisible = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = miniFuselage_4294646610
+	partName = Part
+	pos = -1.865625E-08,14.01706,0.9347199
+	attPos = 0,0,0
+	attPos0 = -1.865625E-08,-0.2654057,0.9347199
+	rot = 4.363343E-08,0.7071068,4.363343E-08,0.7071068
+	attRot = 0,0,0,1
+	attRot0 = 4.363343E-08,0.7071068,4.363343E-08,0.7071068
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	sepI = 0
+	attm = 1
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	link = miniIntake_4294646576
+	link = miniJetEngine_4294646536
+	link = trussPiece1x_4294642860
+	sym = miniFuselage_4294431568
+	sym = miniFuselage_4294646416
+	sym = miniFuselage_4294646222
+	srfN = srfAttach,fuelTankSmallFlat_4294648118
+	attN = top,miniIntake_4294646576
+	attN = bottom,miniJetEngine_4294646536
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	RESOURCE
+	{
+		name = LiquidFuel
+		amount = 30.0000011920929
+		maxAmount = 50
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		isVisible = True
+		flowMode = Both
+	}
+}
+PART
+{
+	part = miniIntake_4294646576
+	partName = Part
+	pos = -1.865625E-08,14.48581,0.9347199
+	attPos = 0,0,0
+	attPos0 = 0,0.46875,0
+	rot = 4.363343E-08,0.7071068,4.363343E-08,0.7071068
+	attRot = 0,0,0,1
+	attRot0 = 0,0,0,1
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	sepI = 0
+	attm = 0
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	sym = miniIntake_4294431534
+	sym = miniIntake_4294646382
+	sym = miniIntake_4294646188
+	attN = bottom01,miniFuselage_4294646610
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = ModuleResourceIntake
+		isEnabled = True
+		intakeEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			Deactivate
+			{
+				active = True
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Close Intake
+				guiName = Close Intake
+				category = Close Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Activate
+			{
+				active = False
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Open Intake
+				guiName = Open Intake
+				category = Open Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	RESOURCE
+	{
+		name = IntakeAir
+		amount = 0.5
+		maxAmount = 0.5
+		flowState = True
+		isTweakable = False
+		hideFlow = False
+		isVisible = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = miniJetEngine_4294646536
+	partName = Part
+	pos = -1.865625E-08,13.54831,0.9347198
+	attPos = 0,0,0
+	attPos0 = 0,-0.46875,0
+	rot = 4.363343E-08,0.7071068,4.363343E-08,0.7071068
+	attRot = 0,0,0,1
+	attRot0 = 0,0,0,1
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 1
+	dstg = 0
+	sidx = 0
+	sqor = 1
+	sepI = 0
+	attm = 0
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	sym = miniJetEngine_4294431494
+	sym = miniJetEngine_4294646342
+	sym = miniJetEngine_4294646148
+	attN = top,miniFuselage_4294646610
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = ModuleEnginesFX
+		isEnabled = True
+		staged = False
+		flameout = False
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		thrustPercentage = 100
+		manuallyOverridden = False
+		stagingEnabled = True
+		thrustPercentage_UIFlight
+		{
+			controlEnabled = True
+			minValue = 0
+			maxValue = 100
+			stepIncrement = 0.5
+		}
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAlternator
+		isEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleTestSubject
+		isEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			RunTestEvent
+			{
+				active = False
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Run Test
+				guiName = Run Test
+				category = Run Test
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleSurfaceFX
+		isEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	RESOURCE
+	{
+		name = ElectricCharge
+		amount = 0
+		maxAmount = 0.02
+		flowState = True
+		isTweakable = False
+		hideFlow = True
+		isVisible = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = miniFuselage_4294646416
+	partName = Part
+	pos = 0.9347199,14.01706,-1.187732E-07
+	attPos = 0,0,0
+	attPos0 = 0.9347199,-0.2654057,-1.187732E-07
+	rot = 6.170698E-08,1,-2.697298E-15,-4.371139E-08
+	attRot = 0,0,0,1
+	attRot0 = 6.170698E-08,1,-2.697298E-15,-4.371139E-08
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	sepI = 0
+	attm = 1
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	link = miniIntake_4294646382
+	link = miniJetEngine_4294646342
+	link = trussPiece1x_4294642808
+	sym = miniFuselage_4294431568
+	sym = miniFuselage_4294646610
+	sym = miniFuselage_4294646222
+	srfN = srfAttach,fuelTankSmallFlat_4294648118
+	attN = top,miniIntake_4294646382
+	attN = bottom,miniJetEngine_4294646342
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	RESOURCE
+	{
+		name = LiquidFuel
+		amount = 30.0000011920929
+		maxAmount = 50
+		flowState = True
+		isTweakable = True
+		hideFlow = False
+		isVisible = True
+		flowMode = Both
+	}
+}
+PART
+{
+	part = miniIntake_4294646382
+	partName = Part
+	pos = 0.93472,14.48581,-1.187732E-07
+	attPos = 0,0,0
+	attPos0 = 0,0.46875,0
+	rot = 6.170698E-08,1,-2.697298E-15,-4.371139E-08
+	attRot = 0,0,0,1
+	attRot0 = 0,0,0,1
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	sepI = 0
+	attm = 0
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	sym = miniIntake_4294431534
+	sym = miniIntake_4294646576
+	sym = miniIntake_4294646188
+	attN = bottom01,miniFuselage_4294646416
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = ModuleResourceIntake
+		isEnabled = True
+		intakeEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			Deactivate
+			{
+				active = True
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Close Intake
+				guiName = Close Intake
+				category = Close Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Activate
+			{
+				active = False
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Open Intake
+				guiName = Open Intake
+				category = Open Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	RESOURCE
+	{
+		name = IntakeAir
+		amount = 0.5
+		maxAmount = 0.5
+		flowState = True
+		isTweakable = False
+		hideFlow = False
+		isVisible = False
+		flowMode = Both
+	}
+}
+PART
+{
+	part = miniJetEngine_4294646342
+	partName = Part
+	pos = 0.9347199,13.54831,-1.187732E-07
+	attPos = 0,0,0
+	attPos0 = 0,-0.46875,0
+	rot = 6.170698E-08,1,-2.697298E-15,-4.371139E-08
+	attRot = 0,0,0,1
+	attRot0 = 0,0,0,1
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 1
+	dstg = 0
+	sidx = 0
+	sqor = 1
+	sepI = 0
+	attm = 0
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	sym = miniJetEngine_4294431494
+	sym = miniJetEngine_4294646536
+	sym = miniJetEngine_4294646148
+	attN = top,miniFuselage_4294646416
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = ModuleEnginesFX
+		isEnabled = True
+		staged = False
+		flameout = False
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		thrustPercentage = 100
+		manuallyOverridden = False
+		stagingEnabled = True
+		thrustPercentage_UIFlight
+		{
+			controlEnabled = True
+			minValue = 0
+			maxValue = 100
+			stepIncrement = 0.5
+		}
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAlternator
+		isEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleTestSubject
+		isEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			RunTestEvent
+			{
+				active = False
+				guiActive = True
+				guiActiveUncommand = False
+				guiIcon = Run Test
+				guiName = Run Test
+				category = Run Test
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleSurfaceFX
+		isEnabled = True
+		stagingEnabled = True
+		EVENTS
+		{
+			ToggleStaging
+			{
+				active = True
+				guiActive = False
+				guiActiveUncommand = False
+				guiIcon = Disable Staging
+				guiName = Disable Staging
+				category = Disable Staging
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	RESOURCE
+	{
+		name = ElectricCharge
+		amount = 0
+		maxAmount = 0.02
+		flowState = True
+		isTweakable = False
+		hideFlow = True
+		isVisible = False
+		flowMode = Both
+	}
 }
 PART
 {
 	part = miniFuselage_4294646222
 	partName = Part
-	pos = -7.280072E-08,13.81349,-0.9323405
+	pos = -9.277105E-08,14.01706,-0.9347199
 	attPos = 0,0,0
-	attPos0 = -7.280072E-08,0.156023,-0.9323405
-	rot = 0,0.7071068,0,-0.7071069
+	attPos0 = -9.277105E-08,-0.2654057,-0.9347199
+	rot = 4.363343E-08,0.7071068,-4.363343E-08,-0.7071068
 	attRot = 0,0,0,1
-	attRot0 = 0,0.7071068,0,-0.7071069
+	attRot0 = 4.363343E-08,0.7071068,-4.363343E-08,-0.7071068
 	mir = 1,1,1
 	symMethod = Radial
 	istg = 0
@@ -745,10 +2193,10 @@ PART
 	link = miniIntake_4294646188
 	link = miniJetEngine_4294646148
 	link = trussPiece1x_4294646080
-	sym = miniFuselage_4294483440
-	sym = miniFuselage_4294483246
-	sym = miniFuselage_4294483052
-	srfN = srfAttach,Mk1FuselageStructural_4294512896
+	sym = miniFuselage_4294431568
+	sym = miniFuselage_4294646610
+	sym = miniFuselage_4294646416
+	srfN = srfAttach,fuelTankSmallFlat_4294648118
 	attN = top,miniIntake_4294646188
 	attN = bottom,miniJetEngine_4294646148
 	EVENTS
@@ -776,10 +2224,10 @@ PART
 {
 	part = miniIntake_4294646188
 	partName = Part
-	pos = -7.280072E-08,14.28224,-0.9323404
+	pos = -9.277105E-08,14.48581,-0.9347199
 	attPos = 0,0,0
 	attPos0 = 0,0.46875,0
-	rot = 0,0.7071068,0,-0.7071069
+	rot = 4.363343E-08,0.7071068,-4.363343E-08,-0.7071068
 	attRot = 0,0,0,1
 	attRot0 = 0,0,0,1
 	mir = 1,1,1
@@ -793,9 +2241,9 @@ PART
 	modCost = 0
 	modMass = 0
 	modSize = (0.0, 0.0, 0.0)
-	sym = miniIntake_4294483406
-	sym = miniIntake_4294483212
-	sym = miniIntake_4294483018
+	sym = miniIntake_4294431534
+	sym = miniIntake_4294646576
+	sym = miniIntake_4294646382
 	attN = bottom01,miniFuselage_4294646222
 	EVENTS
 	{
@@ -875,10 +2323,10 @@ PART
 {
 	part = miniJetEngine_4294646148
 	partName = Part
-	pos = -7.28007E-08,13.34474,-0.9323404
+	pos = -9.277105E-08,13.54831,-0.9347198
 	attPos = 0,0,0
 	attPos0 = 0,-0.46875,0
-	rot = 0,0.7071068,0,-0.7071069
+	rot = 4.363343E-08,0.7071068,-4.363343E-08,-0.7071068
 	attRot = 0,0,0,1
 	attRot0 = 0,0,0,1
 	mir = 1,1,1
@@ -892,9 +2340,9 @@ PART
 	modCost = 0
 	modMass = 0
 	modSize = (0.0, 0.0, 0.0)
-	sym = miniJetEngine_4294483366
-	sym = miniJetEngine_4294483172
-	sym = miniJetEngine_4294482978
+	sym = miniJetEngine_4294431494
+	sym = miniJetEngine_4294646536
+	sym = miniJetEngine_4294646342
 	attN = top,miniFuselage_4294646222
 	EVENTS
 	{
@@ -1079,10 +2527,10 @@ PART
 {
 	part = trussPiece1x_4294646080
 	partName = Part
-	pos = -1.926966E-07,14.08044,-1.799486
+	pos = 2.59643E-09,13.61706,-1.73472
 	attPos = 0.07105255,-0.03587535,-5.682939E-08
-	attPos0 = -0.8671451,0.2669573,6.820999E-08
-	rot = -3.853121E-08,0.7071069,-0.7071067,-1.74578E-08
+	attPos0 = -0.8710528,-0.3641242,5.682938E-08
+	rot = 2.107343E-08,0.7071069,-0.7071067,1.316915E-15
 	attRot = 0,0,0,1
 	attRot0 = 0.4999999,-0.5000001,0.4999999,0.5000001
 	mir = 1,1,1
@@ -1097,9 +2545,9 @@ PART
 	modMass = 0
 	modSize = (0.0, 0.0, 0.0)
 	link = trussPiece1x_4294646054
-	sym = trussPiece1x_4294483298
-	sym = trussPiece1x_4294483104
-	sym = trussPiece1x_4294482910
+	sym = trussPiece1x_4294642912
+	sym = trussPiece1x_4294642860
+	sym = trussPiece1x_4294642808
 	srfN = srfAttach,miniFuselage_4294646222
 	EVENTS
 	{
@@ -1115,10 +2563,10 @@ PART
 {
 	part = trussPiece1x_4294646054
 	partName = Part
-	pos = 5.725377E-08,13.19567,-2.023493
+	pos = 1.280528E-07,12.73229,-1.958727
 	attPos = 0,0,0
 	attPos0 = -3.333528E-08,0.2240075,0.8847714
-	rot = 4.214685E-08,1.639128E-07,-1,-7.410837E-14
+	rot = 8.42937E-08,1.196636E-07,-1,-2.980236E-08
 	attRot = 0,0,0,1
 	attRot0 = 0.7071068,2.980232E-08,7.194917E-08,0.7071068
 	mir = 1,1,1
@@ -1132,9 +2580,9 @@ PART
 	modCost = 0
 	modMass = 0
 	modSize = (0.0, 0.0, 0.0)
-	sym = trussPiece1x_4294483272
-	sym = trussPiece1x_4294483078
-	sym = trussPiece1x_4294482884
+	sym = trussPiece1x_4294642886
+	sym = trussPiece1x_4294642834
+	sym = trussPiece1x_4294642782
 	srfN = srfAttach,trussPiece1x_4294646080
 	EVENTS
 	{
@@ -1148,366 +2596,12 @@ PART
 }
 PART
 {
-	part = miniFuselage_4294483440
+	part = trussPiece1x_4294642912
 	partName = Part
-	pos = -0.9323404,13.81349,1.722889E-08
-	attPos = 0,0,0
-	attPos0 = -0.9323404,0.156023,1.722889E-08
-	rot = 0,-8.42937E-08,0,-1
-	attRot = 0,0,0,1
-	attRot0 = 0,-8.42937E-08,0,-1
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 0
-	dstg = 0
-	sidx = -1
-	sqor = -1
-	sepI = 0
-	attm = 1
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	link = miniIntake_4294483406
-	link = miniJetEngine_4294483366
-	link = trussPiece1x_4294483298
-	sym = miniFuselage_4294646222
-	sym = miniFuselage_4294483246
-	sym = miniFuselage_4294483052
-	srfN = srfAttach,Mk1FuselageStructural_4294512896
-	attN = top,miniIntake_4294483406
-	attN = bottom,miniJetEngine_4294483366
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	RESOURCE
-	{
-		name = LiquidFuel
-		amount = 30.0000011920929
-		maxAmount = 50
-		flowState = True
-		isTweakable = True
-		hideFlow = False
-		isVisible = True
-		flowMode = Both
-	}
-}
-PART
-{
-	part = miniIntake_4294483406
-	partName = Part
-	pos = -0.9323404,14.28224,1.722889E-08
-	attPos = 0,0,0
-	attPos0 = 0,0.46875,0
-	rot = 0,-8.42937E-08,0,-1
-	attRot = 0,0,0,1
-	attRot0 = 0,0,0,1
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 0
-	dstg = 0
-	sidx = -1
-	sqor = -1
-	sepI = 0
-	attm = 0
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	sym = miniIntake_4294646188
-	sym = miniIntake_4294483212
-	sym = miniIntake_4294483018
-	attN = bottom01,miniFuselage_4294483440
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = ModuleResourceIntake
-		isEnabled = True
-		intakeEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-			Deactivate
-			{
-				active = True
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Close Intake
-				guiName = Close Intake
-				category = Close Intake
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			Activate
-			{
-				active = False
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Open Intake
-				guiName = Open Intake
-				category = Open Intake
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ToggleAction
-			{
-				actionGroup = None
-			}
-		}
-	}
-	RESOURCE
-	{
-		name = IntakeAir
-		amount = 0.5
-		maxAmount = 0.5
-		flowState = True
-		isTweakable = False
-		hideFlow = False
-		isVisible = False
-		flowMode = Both
-	}
-}
-PART
-{
-	part = miniJetEngine_4294483366
-	partName = Part
-	pos = -0.9323404,13.34474,1.722886E-08
-	attPos = 0,0,0
-	attPos0 = 0,-0.46875,0
-	rot = 0,-8.42937E-08,0,-1
-	attRot = 0,0,0,1
-	attRot0 = 0,0,0,1
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 1
-	dstg = 0
-	sidx = 0
-	sqor = 1
-	sepI = 0
-	attm = 0
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	sym = miniJetEngine_4294646148
-	sym = miniJetEngine_4294483172
-	sym = miniJetEngine_4294482978
-	attN = top,miniFuselage_4294483440
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = ModuleEnginesFX
-		isEnabled = True
-		staged = False
-		flameout = False
-		EngineIgnited = False
-		engineShutdown = False
-		currentThrottle = 0
-		thrustPercentage = 100
-		manuallyOverridden = False
-		stagingEnabled = True
-		thrustPercentage_UIFlight
-		{
-			controlEnabled = True
-			minValue = 0
-			maxValue = 100
-			stepIncrement = 0.5
-		}
-		EVENTS
-		{
-			Activate
-			{
-				active = True
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Activate Engine
-				guiName = Activate Engine
-				category = Activate Engine
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			Shutdown
-			{
-				active = False
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Shutdown Engine
-				guiName = Shutdown Engine
-				category = Shutdown Engine
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			OnAction
-			{
-				actionGroup = None
-			}
-			ShutdownAction
-			{
-				actionGroup = None
-			}
-			ActivateAction
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleAlternator
-		isEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleTestSubject
-		isEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-			RunTestEvent
-			{
-				active = False
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Run Test
-				guiName = Run Test
-				category = Run Test
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleSurfaceFX
-		isEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	RESOURCE
-	{
-		name = ElectricCharge
-		amount = 0
-		maxAmount = 0.02
-		flowState = True
-		isTweakable = False
-		hideFlow = True
-		isVisible = False
-		flowMode = Both
-	}
-}
-PART
-{
-	part = trussPiece1x_4294483298
-	partName = Part
-	pos = -1.799485,14.08044,2.316286E-07
-	attPos = 0.07105255,-0.03587535,-5.682939E-08
-	attPos0 = -0.8671451,0.2669573,6.820999E-08
-	rot = -0.4999999,0.5000001,-0.4999999,-0.5000001
+	pos = -1.73472,13.61706,3.70574E-08
+	attPos = 0.07105267,-0.03587535,-5.682938E-08
+	attPos0 = -0.8710528,-0.3641242,5.682938E-08
+	rot = 0.4999999,-0.5000001,0.4999999,0.5000001
 	attRot = 0,0,0,1
 	attRot0 = 0.4999999,-0.5000001,0.4999999,0.5000001
 	mir = 1,1,1
@@ -1521,11 +2615,11 @@ PART
 	modCost = 0
 	modMass = 0
 	modSize = (0.0, 0.0, 0.0)
-	link = trussPiece1x_4294483272
+	link = trussPiece1x_4294642886
 	sym = trussPiece1x_4294646080
-	sym = trussPiece1x_4294483104
-	sym = trussPiece1x_4294482910
-	srfN = srfAttach,miniFuselage_4294483440
+	sym = trussPiece1x_4294642860
+	sym = trussPiece1x_4294642808
+	srfN = srfAttach,miniFuselage_4294431568
 	EVENTS
 	{
 	}
@@ -1538,12 +2632,12 @@ PART
 }
 PART
 {
-	part = trussPiece1x_4294483272
+	part = trussPiece1x_4294642886
 	partName = Part
-	pos = -2.023492,13.19567,6.091166E-09
+	pos = -1.958727,12.73229,-6.16952E-08
 	attPos = 0,0,0
 	attPos0 = -3.333528E-08,0.2240075,0.8847714
-	rot = -0.7071068,1.159038E-07,-0.7071069,-1.159039E-07
+	rot = 0.7071068,-6.354148E-08,0.7071069,1.056884E-07
 	attRot = 0,0,0,1
 	attRot0 = 0.7071068,2.980232E-08,7.194917E-08,0.7071068
 	mir = 1,1,1
@@ -1558,9 +2652,9 @@ PART
 	modMass = 0
 	modSize = (0.0, 0.0, 0.0)
 	sym = trussPiece1x_4294646054
-	sym = trussPiece1x_4294483078
-	sym = trussPiece1x_4294482884
-	srfN = srfAttach,trussPiece1x_4294483298
+	sym = trussPiece1x_4294642834
+	sym = trussPiece1x_4294642782
+	srfN = srfAttach,trussPiece1x_4294642912
 	EVENTS
 	{
 	}
@@ -1573,366 +2667,12 @@ PART
 }
 PART
 {
-	part = miniFuselage_4294483246
+	part = trussPiece1x_4294642860
 	partName = Part
-	pos = 1.543085E-07,13.81349,0.9323405
-	attPos = 0,0,0
-	attPos0 = 1.543085E-07,0.156023,0.9323405
-	rot = 0,-0.7071069,0,-0.7071067
-	attRot = 0,0,0,1
-	attRot0 = 0,-0.7071069,0,-0.7071067
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 0
-	dstg = 0
-	sidx = -1
-	sqor = -1
-	sepI = 0
-	attm = 1
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	link = miniIntake_4294483212
-	link = miniJetEngine_4294483172
-	link = trussPiece1x_4294483104
-	sym = miniFuselage_4294646222
-	sym = miniFuselage_4294483440
-	sym = miniFuselage_4294483052
-	srfN = srfAttach,Mk1FuselageStructural_4294512896
-	attN = top,miniIntake_4294483212
-	attN = bottom,miniJetEngine_4294483172
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	RESOURCE
-	{
-		name = LiquidFuel
-		amount = 30.0000011920929
-		maxAmount = 50
-		flowState = True
-		isTweakable = True
-		hideFlow = False
-		isVisible = True
-		flowMode = Both
-	}
-}
-PART
-{
-	part = miniIntake_4294483212
-	partName = Part
-	pos = 1.543085E-07,14.28224,0.9323404
-	attPos = 0,0,0
-	attPos0 = 0,0.46875,0
-	rot = 0,-0.7071069,0,-0.7071067
-	attRot = 0,0,0,1
-	attRot0 = 0,0,0,1
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 0
-	dstg = 0
-	sidx = -1
-	sqor = -1
-	sepI = 0
-	attm = 0
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	sym = miniIntake_4294646188
-	sym = miniIntake_4294483406
-	sym = miniIntake_4294483018
-	attN = bottom01,miniFuselage_4294483246
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = ModuleResourceIntake
-		isEnabled = True
-		intakeEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-			Deactivate
-			{
-				active = True
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Close Intake
-				guiName = Close Intake
-				category = Close Intake
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			Activate
-			{
-				active = False
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Open Intake
-				guiName = Open Intake
-				category = Open Intake
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ToggleAction
-			{
-				actionGroup = None
-			}
-		}
-	}
-	RESOURCE
-	{
-		name = IntakeAir
-		amount = 0.5
-		maxAmount = 0.5
-		flowState = True
-		isTweakable = False
-		hideFlow = False
-		isVisible = False
-		flowMode = Both
-	}
-}
-PART
-{
-	part = miniJetEngine_4294483172
-	partName = Part
-	pos = 1.543085E-07,13.34474,0.9323404
-	attPos = 0,0,0
-	attPos0 = 0,-0.46875,0
-	rot = 0,-0.7071069,0,-0.7071067
-	attRot = 0,0,0,1
-	attRot0 = 0,0,0,1
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 1
-	dstg = 0
-	sidx = 0
-	sqor = 1
-	sepI = 0
-	attm = 0
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	sym = miniJetEngine_4294646148
-	sym = miniJetEngine_4294483366
-	sym = miniJetEngine_4294482978
-	attN = top,miniFuselage_4294483246
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = ModuleEnginesFX
-		isEnabled = True
-		staged = False
-		flameout = False
-		EngineIgnited = False
-		engineShutdown = False
-		currentThrottle = 0
-		thrustPercentage = 100
-		manuallyOverridden = False
-		stagingEnabled = True
-		thrustPercentage_UIFlight
-		{
-			controlEnabled = True
-			minValue = 0
-			maxValue = 100
-			stepIncrement = 0.5
-		}
-		EVENTS
-		{
-			Activate
-			{
-				active = True
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Activate Engine
-				guiName = Activate Engine
-				category = Activate Engine
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			Shutdown
-			{
-				active = False
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Shutdown Engine
-				guiName = Shutdown Engine
-				category = Shutdown Engine
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			OnAction
-			{
-				actionGroup = None
-			}
-			ShutdownAction
-			{
-				actionGroup = None
-			}
-			ActivateAction
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleAlternator
-		isEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleTestSubject
-		isEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-			RunTestEvent
-			{
-				active = False
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Run Test
-				guiName = Run Test
-				category = Run Test
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleSurfaceFX
-		isEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	RESOURCE
-	{
-		name = ElectricCharge
-		amount = 0
-		maxAmount = 0.02
-		flowState = True
-		isTweakable = False
-		hideFlow = True
-		isVisible = False
-		flowMode = Both
-	}
-}
-PART
-{
-	part = trussPiece1x_4294483104
-	partName = Part
-	pos = 6.360054E-07,14.08044,1.799486
-	attPos = 0.07105255,-0.03587535,-5.682939E-08
-	attPos0 = -0.8671451,0.2669573,6.820999E-08
-	rot = -0.7071067,-7.706246E-08,9.813584E-08,-0.7071069
+	pos = 7.671122E-08,13.61706,1.73472
+	attPos = 0.07105279,-0.03587535,-5.682938E-08
+	attPos0 = -0.871053,-0.3641242,5.682939E-08
+	rot = 0.7071067,-1.300378E-15,2.107343E-08,0.7071069
 	attRot = 0,0,0,1
 	attRot0 = 0.4999999,-0.5000001,0.4999999,0.5000001
 	mir = 1,1,1
@@ -1946,11 +2686,11 @@ PART
 	modCost = 0
 	modMass = 0
 	modSize = (0.0, 0.0, 0.0)
-	link = trussPiece1x_4294483078
+	link = trussPiece1x_4294642834
 	sym = trussPiece1x_4294646080
-	sym = trussPiece1x_4294483298
-	sym = trussPiece1x_4294482910
-	srfN = srfAttach,miniFuselage_4294483246
+	sym = trussPiece1x_4294642912
+	sym = trussPiece1x_4294642808
+	srfN = srfAttach,miniFuselage_4294646610
 	EVENTS
 	{
 	}
@@ -1963,12 +2703,12 @@ PART
 }
 PART
 {
-	part = trussPiece1x_4294483078
+	part = trussPiece1x_4294642834
 	partName = Part
-	pos = 4.795181E-07,13.19567,2.023493
+	pos = 4.662338E-09,12.73229,1.958727
 	attPos = 0,0,0
 	attPos0 = -3.333528E-08,0.2240075,0.8847714
-	rot = -1,-8.792518E-14,4.214686E-08,-1.639128E-07
+	rot = 1,2.980236E-08,8.42937E-08,1.196636E-07
 	attRot = 0,0,0,1
 	attRot0 = 0.7071068,2.980232E-08,7.194917E-08,0.7071068
 	mir = 1,1,1
@@ -1983,9 +2723,9 @@ PART
 	modMass = 0
 	modSize = (0.0, 0.0, 0.0)
 	sym = trussPiece1x_4294646054
-	sym = trussPiece1x_4294483272
-	sym = trussPiece1x_4294482884
-	srfN = srfAttach,trussPiece1x_4294483104
+	sym = trussPiece1x_4294642886
+	sym = trussPiece1x_4294642782
+	srfN = srfAttach,trussPiece1x_4294642860
 	EVENTS
 	{
 	}
@@ -1998,366 +2738,12 @@ PART
 }
 PART
 {
-	part = miniFuselage_4294483052
+	part = trussPiece1x_4294642808
 	partName = Part
-	pos = 0.9323404,13.81349,-1.283725E-07
-	attPos = 0,0,0
-	attPos0 = 0.9323404,0.156023,-1.283725E-07
-	rot = 0,-1,0,8.42937E-08
-	attRot = 0,0,0,1
-	attRot0 = 0,-1,0,8.42937E-08
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 0
-	dstg = 0
-	sidx = -1
-	sqor = -1
-	sepI = 0
-	attm = 1
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	link = miniIntake_4294483018
-	link = miniJetEngine_4294482978
-	link = trussPiece1x_4294482910
-	sym = miniFuselage_4294646222
-	sym = miniFuselage_4294483440
-	sym = miniFuselage_4294483246
-	srfN = srfAttach,Mk1FuselageStructural_4294512896
-	attN = top,miniIntake_4294483018
-	attN = bottom,miniJetEngine_4294482978
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	RESOURCE
-	{
-		name = LiquidFuel
-		amount = 30.0000011920929
-		maxAmount = 50
-		flowState = True
-		isTweakable = True
-		hideFlow = False
-		isVisible = True
-		flowMode = Both
-	}
-}
-PART
-{
-	part = miniIntake_4294483018
-	partName = Part
-	pos = 0.9323404,14.28224,-1.283725E-07
-	attPos = 0,0,0
-	attPos0 = 0,0.46875,0
-	rot = 0,-1,0,8.42937E-08
-	attRot = 0,0,0,1
-	attRot0 = 0,0,0,1
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 0
-	dstg = 0
-	sidx = -1
-	sqor = -1
-	sepI = 0
-	attm = 0
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	sym = miniIntake_4294646188
-	sym = miniIntake_4294483406
-	sym = miniIntake_4294483212
-	attN = bottom01,miniFuselage_4294483052
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = ModuleResourceIntake
-		isEnabled = True
-		intakeEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-			Deactivate
-			{
-				active = True
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Close Intake
-				guiName = Close Intake
-				category = Close Intake
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			Activate
-			{
-				active = False
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Open Intake
-				guiName = Open Intake
-				category = Open Intake
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ToggleAction
-			{
-				actionGroup = None
-			}
-		}
-	}
-	RESOURCE
-	{
-		name = IntakeAir
-		amount = 0.5
-		maxAmount = 0.5
-		flowState = True
-		isTweakable = False
-		hideFlow = False
-		isVisible = False
-		flowMode = Both
-	}
-}
-PART
-{
-	part = miniJetEngine_4294482978
-	partName = Part
-	pos = 0.9323404,13.34474,-1.283725E-07
-	attPos = 0,0,0
-	attPos0 = 0,-0.46875,0
-	rot = 0,-1,0,8.42937E-08
-	attRot = 0,0,0,1
-	attRot0 = 0,0,0,1
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 1
-	dstg = 0
-	sidx = 0
-	sqor = 1
-	sepI = 0
-	attm = 0
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	sym = miniJetEngine_4294646148
-	sym = miniJetEngine_4294483366
-	sym = miniJetEngine_4294483172
-	attN = top,miniFuselage_4294483052
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = ModuleEnginesFX
-		isEnabled = True
-		staged = False
-		flameout = False
-		EngineIgnited = False
-		engineShutdown = False
-		currentThrottle = 0
-		thrustPercentage = 100
-		manuallyOverridden = False
-		stagingEnabled = True
-		thrustPercentage_UIFlight
-		{
-			controlEnabled = True
-			minValue = 0
-			maxValue = 100
-			stepIncrement = 0.5
-		}
-		EVENTS
-		{
-			Activate
-			{
-				active = True
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Activate Engine
-				guiName = Activate Engine
-				category = Activate Engine
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			Shutdown
-			{
-				active = False
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Shutdown Engine
-				guiName = Shutdown Engine
-				category = Shutdown Engine
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			OnAction
-			{
-				actionGroup = None
-			}
-			ShutdownAction
-			{
-				actionGroup = None
-			}
-			ActivateAction
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleAlternator
-		isEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleTestSubject
-		isEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-			RunTestEvent
-			{
-				active = False
-				guiActive = True
-				guiActiveUncommand = False
-				guiIcon = Run Test
-				guiName = Run Test
-				category = Run Test
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleSurfaceFX
-		isEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-			ToggleStaging
-			{
-				active = True
-				guiActive = False
-				guiActiveUncommand = False
-				guiIcon = Disable Staging
-				guiName = Disable Staging
-				category = Disable Staging
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	RESOURCE
-	{
-		name = ElectricCharge
-		amount = 0
-		maxAmount = 0.02
-		flowState = True
-		isTweakable = False
-		hideFlow = True
-		isVisible = False
-		flowMode = Both
-	}
-}
-PART
-{
-	part = trussPiece1x_4294482910
-	partName = Part
-	pos = 1.799485,14.08044,-3.427722E-07
-	attPos = 0.07105255,-0.03587535,-5.682939E-08
-	attPos0 = -0.8671451,0.2669573,6.820999E-08
-	rot = -0.4999999,-0.5000001,0.4999999,-0.5000001
+	pos = 1.73472,13.61706,-1.887114E-07
+	attPos = 0.07105267,-0.03587535,-5.682936E-08
+	attPos0 = -0.8710528,-0.3641242,5.682936E-08
+	rot = 0.4999999,0.5000001,-0.4999999,0.5000001
 	attRot = 0,0,0,1
 	attRot0 = 0.4999999,-0.5000001,0.4999999,0.5000001
 	mir = 1,1,1
@@ -2371,11 +2757,11 @@ PART
 	modCost = 0
 	modMass = 0
 	modSize = (0.0, 0.0, 0.0)
-	link = trussPiece1x_4294482884
+	link = trussPiece1x_4294642782
 	sym = trussPiece1x_4294646080
-	sym = trussPiece1x_4294483298
-	sym = trussPiece1x_4294483104
-	srfN = srfAttach,miniFuselage_4294483052
+	sym = trussPiece1x_4294642912
+	sym = trussPiece1x_4294642860
+	srfN = srfAttach,miniFuselage_4294646416
 	EVENTS
 	{
 	}
@@ -2388,12 +2774,12 @@ PART
 }
 PART
 {
-	part = trussPiece1x_4294482884
+	part = trussPiece1x_4294642782
 	partName = Part
-	pos = 2.023492,13.19567,-1.172348E-07
+	pos = 1.958727,12.73229,-1.095421E-07
 	attPos = 0,0,0
 	attPos0 = -3.333528E-08,0.2240075,0.8847714
-	rot = -0.7071069,-1.159039E-07,0.7071068,-1.159038E-07
+	rot = 0.7071068,1.056884E-07,-0.7071068,6.354148E-08
 	attRot = 0,0,0,1
 	attRot0 = 0.7071068,2.980232E-08,7.194917E-08,0.7071068
 	mir = 1,1,1
@@ -2408,9 +2794,9 @@ PART
 	modMass = 0
 	modSize = (0.0, 0.0, 0.0)
 	sym = trussPiece1x_4294646054
-	sym = trussPiece1x_4294483272
-	sym = trussPiece1x_4294483078
-	srfN = srfAttach,trussPiece1x_4294482910
+	sym = trussPiece1x_4294642886
+	sym = trussPiece1x_4294642834
+	srfN = srfAttach,trussPiece1x_4294642808
 	EVENTS
 	{
 	}
